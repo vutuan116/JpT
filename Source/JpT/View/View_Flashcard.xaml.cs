@@ -222,6 +222,7 @@ namespace JpT
                 wordIndexInListShowed = listWordIdShowed.Count;
 
                 processbar.Maximum = _model.CurrentListWord.Count;
+                processbar.Value = 0;
                 tbxHiragana.Focus();
             }
         }
