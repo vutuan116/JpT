@@ -265,6 +265,7 @@ namespace JpT
                     {
                         temp = _model.CurrentListWord.FirstOrDefault(x => x.Id == listWordIdShowed.Last());
                         _model.CurrentWord = temp;
+                        _model.CurrentWord.IsDisplayed = false;
                         wordIndexInListShowed = listWordIdShowed.Count;
                         tbxMean.Visibility = Visibility.Hidden;
                     }
