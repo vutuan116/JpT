@@ -63,3 +63,11 @@ Source/JpT/obj/Release/TempPE/Properties.Resources.Designer.cs.dll
 Source/JpT/obj/Debug/JpT.csprojAssemblyReference.cache
 Source/JpT/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 Data/Kanji_N4-5.pdf
+Source/_Release/MaterialDesignColors.dll
+Source/_Release/MaterialDesignThemes.Wpf.dll
+Source/_Release/WpfAnimatedGif.dll
+Source/JpT/JpT.csproj
+Source/JpT/obj/Release/JpT_MarkupCompile.i.cache
+Source/JpT/obj/Release/JpT_MarkupCompile.i.lref
+Source/_Release/EPPlus.dll
+Source/_Release/Data/Data.xlsx
