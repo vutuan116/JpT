@@ -60,6 +60,7 @@ namespace JpT.Logic
         private WordModel ConvertWordEntityToWordModel(WordEntity entity, bool isRepeat = true)
         {
             WordModel model = CommonUtils.MappingData<WordModel>(entity);
+            model.CnVi = string.IsNullOrEmpty(model.CnVi) ? model.CnVi : model.CnVi.ToUpper();
             model.IsHard = !string.IsNullOrEmpty(entity.IsHard);
             model.IsLock = !string.IsNullOrEmpty(entity.Lock);
             model.IsRepeat = isRepeat;
