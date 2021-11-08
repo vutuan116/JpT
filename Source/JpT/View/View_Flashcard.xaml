@@ -38,7 +38,7 @@
         </Style>
     </UserControl.Resources>
     <Grid Background="AliceBlue" Width="700">
-        <StackPanel Name="tabSelectLesson" Visibility="Visible" Margin="10">
+        <StackPanel Name="tabSelectLesson" Visibility="Hidden" Margin="10">
             <materialDesign:Card FontSize="14px" Margin="10 0 10 0">
                 <StackPanel Orientation="Horizontal" Margin="0 10 0 5" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <ComboBox Width="48px" Height="30" Foreground="Black" Margin="0 0 30 5" SelectionChanged="cbbxLevel_Change" Name="cbbxLevel">
@@ -161,26 +161,32 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Name="tabShowAll"  Visibility="Hidden">
-            <DataGrid ScrollViewer.VerticalScrollBarVisibility="Visible"
+        <StackPanel Name="tabShowAll"  Visibility="Visible">
+            <Grid>
+                <StackPanel>
+                    <DataGrid ScrollViewer.VerticalScrollBarVisibility="Visible"
                           CanUserAddRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False"
                           CanUserResizeRows="False" CanUserSortColumns="False" AutoGenerateColumns="False"
                           SelectionMode="Single" SelectionUnit ="FullRow" Background="AliceBlue"
                           ItemsSource="{Binding CurrentListWord}" Height="512" Width="684" BorderThickness="1" FontSize="15" Margin="0 10 0 0" >
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Lesson" IsReadOnly="True" Binding="{Binding Lesson}" Width="3*"/>
-                    <DataGridTextColumn Header="Kanji" IsReadOnly="True" Binding="{Binding Kanji}" Width="4*"/>
-                    <DataGridTextColumn Header="Hiragana" IsReadOnly="True" Binding="{Binding Hiragana}" Width="5*"/>
-                    <DataGridTextColumn Header="Meaning" IsReadOnly="True" Binding="{Binding Mean}" Width="6*" />
-                    <DataGridCheckBoxColumn Header="Hard" Binding="{Binding IsHard}" Width="54"/>
-                    <DataGridCheckBoxColumn Header="Lock" Binding="{Binding IsLock}" Width="54"/>
-                </DataGrid.Columns>
-            </DataGrid>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
-                <Button Content="_Save" Width="140" Click="btnSaveListWord_Click" Name="btnBackMenu" Height="36" Margin="12"/>
-                <Button Content="_Back" Width="140" Click="btnBackToMenu_Click" Height="36" Margin="12"/>
-            </StackPanel>
-
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Lesson" IsReadOnly="True" Binding="{Binding Lesson}" Width="3*"/>
+                            <DataGridTextColumn Header="" IsReadOnly="True" Binding="{Binding Kanji}" Width="4*"/>
+                            <DataGridTextColumn Header="" IsReadOnly="True" Binding="{Binding Hiragana}" Width="5*"/>
+                            <DataGridTextColumn Header="" IsReadOnly="True" Binding="{Binding Mean}" Width="6*" />
+                            <DataGridCheckBoxColumn Header="Hard" Binding="{Binding IsHard}" Width="54"/>
+                            <DataGridCheckBoxColumn Header="Lock" Binding="{Binding IsLock}" Width="54"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                        <Button Content="_Save" Width="140" Click="btnSaveListWord_Click" Name="btnBackMenu" Height="36" Margin="12"/>
+                        <Button Content="_Back" Width="140" Click="btnBackToMenu_Click" Height="36" Margin="12"/>
+                    </StackPanel>
+                </StackPanel>
+                <CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120 28 0 0" FontWeight="DemiBold" FontSize="12" Content="Kanji" Name="KanjiCbx" Checked="tabShowAllCbxChange" Unchecked="tabShowAllCbxChange"/>
+                <CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="246 28 0 0" FontWeight="DemiBold" FontSize="12" Content="Hiragana" Name="HiraCbx" Checked="tabShowAllCbxChange" Unchecked="tabShowAllCbxChange"/>
+                <CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="400 28 0 0" FontWeight="DemiBold" FontSize="12" Content="Meaning" Name="MeanCbx" Checked="tabShowAllCbxChange" Unchecked="tabShowAllCbxChange"/>
+            </Grid>
         </StackPanel>
 
         <Grid Name="tabLoading" Visibility="Hidden" Background="White" Width="700" Height="600" Opacity="0.5" >

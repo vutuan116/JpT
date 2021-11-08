@@ -23,7 +23,8 @@ namespace JpT
     {
         private ViewFlashcardLogic _logic = new ViewFlashcardLogic();
         private ViewFlashcardModel _model = new ViewFlashcardModel();
-        private List<int> listWordIdShowed = new List<int>();
+        private List<int> listWordIdShowed;
+        private List<WordModel> listWordTemp = new List<WordModel>();
         private int wordIndexInListShowed = 0;
 
         public View_Flashcard(MainWindow mainWindow)
@@ -88,6 +89,7 @@ namespace JpT
             }
 
             tabFlashCard.Visibility = Visibility.Hidden;
+            tabShowAll.Visibility = Visibility.Hidden;
             tabSelectLesson.Visibility = Visibility.Visible;
         }
 
@@ -209,7 +211,16 @@ namespace JpT
             if (_model.StartMode == StartModeEnum.ViewListWord)
             {
                 tabSelectLesson.Visibility = Visibility.Hidden;
+                listWordTemp = new List<WordModel>();
+                foreach (WordModel x in _model.CurrentListWord)
+                {
+                    listWordTemp.Add(x.Clone());
+                }
                 tabShowAll.Visibility = Visibility.Visible;
+
+                KanjiCbx.IsChecked = true;
+                HiraCbx.IsChecked = true;
+                MeanCbx.IsChecked = true;
             }
             else
             {
@@ -345,6 +356,64 @@ namespace JpT
         {
             _logic.UpdateWordHardAndLock(_model.CurrentListWord);
             btnBackToMenu_Click();
+        }
+
+        private void tabShowAllCbxChange(object sender, RoutedEventArgs e)
+        {
+            if (KanjiCbx.IsChecked == true)
+            {
+                foreach (WordModel x in _model.CurrentListWord)
+                {
+                    if (string.IsNullOrEmpty(x.Kanji))
+                    {
+                        x.Kanji = listWordTemp.First(y => y.Id == x.Id).Kanji;
+                    }
+                }
+            }
+            else
+            {
+                foreach (WordModel x in _model.CurrentListWord)
+                {
+                    x.Kanji = string.Empty;
+                }
+            }
+
+            if (HiraCbx.IsChecked == true)
+            {
+                foreach (WordModel x in _model.CurrentListWord)
+                {
+                    if (string.IsNullOrEmpty(x.Hiragana))
+                    {
+                        x.Hiragana = listWordTemp.First(y => y.Id == x.Id).Hiragana;
+                    }
+                }
+            }
+            else
+            {
+                foreach (WordModel x in _model.CurrentListWord)
+                {
+                    x.Hiragana = string.Empty;
+                }
+            }
+
+            if (MeanCbx.IsChecked == true)
+            {
+                foreach (WordModel x in _model.CurrentListWord)
+                {
+                    if (string.IsNullOrEmpty(x.Mean))
+                    {
+                        x.Mean = listWordTemp.First(y => y.Id == x.Id).Mean;
+                    }
+                }
+            }
+            else
+            {
+                foreach (WordModel x in _model.CurrentListWord)
+                {
+                    x.Mean = string.Empty;
+                }
+            }
+
         }
         #endregion
     }
