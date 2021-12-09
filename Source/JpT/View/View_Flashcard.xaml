@@ -38,7 +38,7 @@
         </Style>
     </UserControl.Resources>
     <Grid Background="AliceBlue" Width="700">
-        <StackPanel Name="tabSelectLesson" Visibility="Hidden" Margin="10">
+        <StackPanel Name="tabSelectLesson" Visibility="Visible" Margin="10">
             <materialDesign:Card FontSize="14px" Margin="10 0 10 0">
                 <StackPanel Orientation="Horizontal" Margin="0 10 0 5" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <ComboBox Width="48px" Height="30" Foreground="Black" Margin="0 0 30 5" SelectionChanged="cbbxLevel_Change" Name="cbbxLevel">
@@ -161,7 +161,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Name="tabShowAll"  Visibility="Visible">
+        <StackPanel Name="tabShowAll"  Visibility="Hidden">
             <Grid>
                 <StackPanel>
                     <DataGrid ScrollViewer.VerticalScrollBarVisibility="Visible"
@@ -188,9 +188,5 @@
                 <CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="400 28 0 0" FontWeight="DemiBold" FontSize="12" Content="Meaning" Name="MeanCbx" Checked="tabShowAllCbxChange" Unchecked="tabShowAllCbxChange"/>
             </Grid>
         </StackPanel>
-
-        <Grid Name="tabLoading" Visibility="Hidden" Background="White" Width="700" Height="600" Opacity="0.5" >
-            <Image Name="xxx" gif:ImageBehavior.AnimatedSource="/Image/loading.gif" VerticalAlignment="Center" Width="100"></Image>
-        </Grid>
     </Grid>
 </UserControl>
