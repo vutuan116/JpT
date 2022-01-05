@@ -12,6 +12,21 @@ namespace JpT.Model
         private ObservableCollection<LessonModel> _listKanjiLesson = new ObservableCollection<LessonModel>();
         private ObservableCollection<WordModel> _currentListWord = new ObservableCollection<WordModel>();
         private WordModel _currentWord = new WordModel();
+        private bool _isCheckRepeat;
+
+        public bool IsCheckRepeat
+        {
+            get
+            {
+                return _isCheckRepeat;
+            }
+            set
+            {
+                if (_isCheckRepeat == value) return;
+                _isCheckRepeat = value;
+                OnPropertyChanged("IsCheckRepeat");
+            }
+        }
 
         public LevelEnum Level { get; set; }
 

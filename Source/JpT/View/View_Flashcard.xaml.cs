@@ -113,15 +113,19 @@ namespace JpT
                     break;
                 case 1:
                     _model.StartMode = StartModeEnum.LearnNormal;
+                    _model.IsCheckRepeat = true;
                     break;
                 case 2:
                     _model.StartMode = StartModeEnum.OnlyHard;
+                    _model.IsCheckRepeat = false;
                     break;
                 case 3:
                     _model.StartMode = StartModeEnum.Remind;
+                    _model.IsCheckRepeat = false;
                     break;
                 default:
                     _model.StartMode = StartModeEnum.LearnNormal;
+                    _model.IsCheckRepeat = true;
                     break;
             }
             subStartModeDiv.Visibility = _model.StartMode == StartModeEnum.ViewListWord ? Visibility.Hidden : Visibility.Visible;
@@ -192,7 +196,7 @@ namespace JpT
                     listLesson.Add(_model.ListKanjiLesson[i]);
                 }
             }
-            List<WordModel> wordList = _logic.GetListWordByLesson(listLesson, _model.StartMode);
+            List<WordModel> wordList = _logic.GetListWordByLesson(listLesson, _model.StartMode, _model.IsCheckRepeat);
             if (_model.SubStartMode == SubStartModeEnum.Random && _model.StartMode != StartModeEnum.ViewListWord)
             {
                 _model.CurrentListWord = new ObservableCollection<WordModel>(_logic.RandomWordInList(wordList));

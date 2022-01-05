@@ -17,7 +17,7 @@ namespace JpT.Logic
             return dAO.GetListLesson(level);
         }
 
-        public List<WordModel> GetListWordByLesson(List<LessonModel> listLesson, StartModeEnum typeGetWord)
+        public List<WordModel> GetListWordByLesson(List<LessonModel> listLesson, StartModeEnum typeGetWord, bool isRepeat)
         {
             List<WordModel> result = new List<WordModel>();
             List<WordEntity> listEntity = new List<WordEntity>();
@@ -27,7 +27,7 @@ namespace JpT.Logic
                 listEntity = dAO.GetWordRemind();
                 foreach (WordEntity entity in listEntity)
                 {
-                    result.Add(ConvertWordEntityToWordModel(entity, false));
+                    result.Add(ConvertWordEntityToWordModel(entity, isRepeat));
                 }
                 return result;
             }
@@ -39,7 +39,7 @@ namespace JpT.Logic
 
             foreach (WordEntity entity in listEntity)
             {
-                WordModel model = ConvertWordEntityToWordModel(entity);
+                WordModel model = ConvertWordEntityToWordModel(entity, isRepeat);
 
                 if (typeGetWord == StartModeEnum.ViewListWord)
                 {

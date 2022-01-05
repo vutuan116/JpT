@@ -57,6 +57,7 @@
                     <StackPanel Orientation="Horizontal" Name="subStartModeDiv">
                         <RadioButton Foreground="Black" VerticalAlignment="Center" GroupName="selectTypeLearn" Checked="SubStartMode_Checked" Name="rdbxSequentially" Unchecked="SubStartMode_UnChecked">Tuần tự</RadioButton>
                         <RadioButton Foreground="Black" Name="rdbxRandom" Margin="15 0 0 0" VerticalAlignment="Center" GroupName="selectTypeLearn">Ngẫu nhiên</RadioButton>
+                        <CheckBox IsChecked="{Binding IsCheckRepeat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="20 0 0 0">Repeat Word</CheckBox>
                     </StackPanel>
                 </StackPanel>
             </materialDesign:Card>
