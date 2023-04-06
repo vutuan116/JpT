@@ -1,0 +1,239 @@
+body{
+    max-width: 768px;
+    color: rgb(21, 12, 61);
+    margin: auto;
+}
+
+.fz_20{
+    font-size: 20px;
+}
+.test_wb td{
+    height: 60px;
+}
+@media only screen and (max-width: 992px) {
+    .height_1per3 {
+        height: 34vh !important;
+    }
+    .title{
+        margin-top: 0.25rem!important;
+        margin-bottom: 0.25rem!important;
+    }
+    body{
+        background-size:100% 100%;
+    }
+    .form-control{
+        padding: 0.15rem 0.5rem;
+    }
+}
+ruby{
+    vertical-align: middle;
+}
+.title{
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.cnvi{
+    font-size: 70%;
+    color: darkred;
+    font-weight: 500;
+}
+p{
+    margin-top: 0.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.cursor_pointer {
+    cursor: pointer;
+}
+
+.lesson_div {
+    overflow: auto;
+    height: 50vh;
+}
+
+.fw-bold {
+    font-weight: bold;
+}
+
+.btn_wordhard.on{
+    color: #ffcd39;
+}
+.btn_wordhard.on:hover{
+    color: #fdcf45;
+}
+.lb_no{
+    width: 21px!important;
+    text-align: end;
+}
+.btn_repeat.on{
+    color: rgb(201, 3, 3);
+}
+.btn_repeat.on:hover{
+    color: rgb(185, 24, 24);
+}
+.td_wHard{
+    width: 1%;
+    white-space: nowrap;
+}
+.btn_wordhard, .btn_repeat{
+    color: lightgray;
+    font-size: 20px;
+}
+
+.btn_wordhard:hover,.btn_repeat:hover{
+    color: rgb(185, 122, 122);
+    cursor: pointer;
+}
+.lineh-1{
+    line-height: 1.5rem;
+}
+.tbl-no-custom{
+    color: black!important;
+    font-size: 22px;
+}
+.show{
+    color: white!important;
+}
+.fa-eye{
+    color: gray;
+}
+ruby {
+    display: inline-flex;
+    flex-direction: column-reverse;
+}
+
+.ls_selected{
+    color: red;
+}
+.gre_color{
+    color: rgb(9 36 167);
+}
+rb,
+rt {
+    display: inline;
+    line-height: 0.75;
+    font-size: 90%;
+    color: red;
+}
+.td_1_20{
+    width: 5%;
+}
+.td_6_20{
+    width: 30%;
+    vertical-align: middle;
+}
+.td_7_20{
+    width: 35%;
+    vertical-align: middle;
+}
+.td_10_20{
+    width: 50%;
+}
+
+.fl_right{
+    float: right;
+}
+.bd_l_0{
+    border-left: 0px;
+}
+.bd_r_0{
+    border-right: 0px;
+}
+
+.td_btn_repeat{
+    font-weight: normal;
+    font-size: 18px;
+    text-align: center;
+    width: 60px;
+}
+
+#tbl_body_list_wordbook{
+    font-size: 28px;
+    vertical-align: middle;
+}
+
+#word_select{
+    font-weight: 600;
+}
+
+.hide{
+    display: none;
+}
+.w-80{
+    width: 80%;
+}
+.btn_ontop{
+    position: fixed;
+    bottom: 42px!important;
+    right: 10px!important;
+    z-index: 10000;
+    color: green;
+    font-size: 32px;
+}
+.btn_bottom{
+    position: fixed;
+    bottom: 10px!important;
+    right: 10px!important;
+    z-index: 10000;
+    color: green;
+    font-size: 32px;
+}
+.btn_gohome{
+    position: fixed;
+    bottom: 72px!important;
+    right: 10px!important;
+    z-index: 10000;
+    color: green;
+    font-size: 28px;
+}
+
+h1, h2, h3, h4, h5, h6{
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+.pl-1{
+    padding-left: 0.25rem;
+}
+.pl-0{
+    padding-left: 0rem;
+}
+.pr-1{
+    padding-right: 0.25rem;
+}
+.pr-0{
+    padding-right: 0rem!important;
+}
+
+.px-1{
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+}
+
+@media only screen and (max-width: 768px) {
+    #tbl_body_list_wordbook{
+        font-size: 20px;
+    }
+
+    .btn_bottom{
+        font-size: 24px;
+        bottom: 5px!important;
+        right: 5px!important;
+    }
+    .btn_ontop{
+        font-size: 24px;
+        bottom: 32px!important;
+        right: 5px!important;
+    }
+    .btn_gohome{
+        font-size: 20px;
+        bottom: 59px!important;
+        right: 5px!important;
+    }
+    
+    .container{
+        padding: 1rem!important;
+        max-width: 632px!important;
+    }
+}
+
