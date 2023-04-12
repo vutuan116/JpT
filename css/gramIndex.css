@@ -1,0 +1,28 @@
+body{
+    max-width: 980px;
+    color: rgb(21, 12, 61);
+    margin: auto;
+}
+
+.grammar{
+    background-color: bisque;
+    margin: 1rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    margin-top: 0rem;
+}
+
+.grammar.even{
+    background-color: thistle;
+}
+
+.gra_label{
+    width: 140px;
+}
+
+.ck.ck-reset.ck-editor.ck-rounded-corners{
+    width: calc(100% - 140px)!important;
+}
+.hide{
+    display: none;
+}

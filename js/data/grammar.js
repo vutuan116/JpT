@@ -5,8 +5,7 @@ var grammar =
             "Label":"VtariVtari",
             "Mean":"V1 và V2",
             "Gram":"",
-            "Example":"SAN, SƠN",
-            "Note":""
+            "Example":"SAN, SƠN"
         },
 	}
 ]

@@ -10,13 +10,8 @@
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v5.15.4/css/all.css">
     <link rel="stylesheet" href="css/gramIndex.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-
-
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.easing.min.js"></script>
-    
-    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
-
 </head>
 
 <body class="">
@@ -24,13 +19,13 @@
         <div class="row">
             <div class="pt-3">
                 <h3 class="form-label">Lesson</h3>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" id="lesson">
             </div>
         </div>
         <div class="row">
             <div class="pt-3">
                 <h3 class="form-label">Level</h3>
-                <select class="form-control" id="">
+                <select class="form-control" id="level">
                     <option value="N5">N5</option>
                     <option value="N4">N4</option>
                     <option value="N3">N3</option>
@@ -39,34 +34,25 @@
         </div>
         <div class="row">
             <div class="pt-3">
-                <h3 class="form-label">Grammar: </h3>
+                <h3 class="form-label">Grammar:</h3>
             </div>
         </div>
-        <div class="grammar_div">
+        <div id="grammar_div">
 
         </div>
-        <div class="row grammar">
-            <h3 class="form-label">Grammar 1: </h3>
-            <div class="row mb-3">
-                <h5 class=" col-auto gra_label text-end form-label mb-0 pt-1">Label:</h5>
-                <input class="col form-control" type="text">
+        <div class="row justify-content-md-center mb-3">
+            <div class="col-lg-3">
+                <button type="button" class="btn btn-primary btn-sm w-100 fw-bold" onclick="genGrammar()">Grammar form <i class="fas fa-plus-circle text-end"></i></button>
             </div>
-            <div class="row mb-3">
-                <h5 class="col-auto gra_label text-end form-label mb-0 pt-1">Mean:</h5>
-                <textarea class="col form-control" rows="2"></textarea>
+        </div>
+        <div class="row justify-content-md-center mb-3">
+            <div class="col-lg-3">
+                <button type="button" class="btn btn-primary btn-sm w-100 fw-bold" onclick="createGrammar()">Gen script</button>
             </div>
-            <div class="row mb-3">
-                <h5 class="col-auto gra_label text-end form-label mb-0 pt-1">Grammar:</h5>
-                <div class="ck_editor gram"></div>
-            </div>
-            <div class="row mb-3">
-                <h5 class="col-auto gra_label text-end form-label mb-0 pt-1">Example:</h5>
-                <div class="ck_editor exam"></div>
-            </div>
-            <div class="row mb-3">
-                <h5 class="col-auto gra_label text-end form-label mb-0 pt-1">Note:</h5>
-                <div class="ck_editor note"></div>
-            </div>
+        </div>
+
+        <div class="row">
+            <textarea class="col form-control" rows="4" id="grammarData"></textarea>
         </div>
     </div>
 
