@@ -38,28 +38,108 @@
             </div>
         </div>
         <div id="grammar_div">
-
-        </div>
-        <div class="row justify-content-md-center mb-3">
-            <div class="col-lg-3">
-                <button type="button" class="btn btn-primary btn-sm w-100 fw-bold" onclick="genGrammar()">Grammar form <i class="fas fa-plus-circle text-end"></i></button>
+            <div class="grammar">
+                <div class="row gram_header">
+                    <div class="col-auto pr-0">
+                        <h4 class="p-0 m-0"><i class="fas fa-star"></i> 1～ても: </h4>
+                    </div>
+                    <div class="col text-end p-0">
+                        <button type="button" class="btn btn-outline-primary btn-sm w-auto" onclick="$('#gm_1').toggleClass('hide')"><i
+                                class="far fa-chevron-double-down"></i></button>
+                    </div>
+                </div>
+                <div class="gram_content hide" id="gm_1">
+                    <h5 class="ml-2 p-0">Mean:</h5>
+                    <p class="ml-3 p-0">
+                        - mặc dù, cho dù<br>- dùng để giả định
+                    </p>
+                    <h5 class="ml-2 p-0">Grammar:</h5>
+                    <table class="table table-bordered border-primary align-middle w-auto ml-3 text-grammar">
+                        <td>
+                            ｖて<br>
+                            Nで<br>
+                            A<span class="txt-line">い</span>くて<br>
+                            A<span class="txt-line">な</span>で
+                        </td>
+                        <td>
+                            も
+                        </td>
+                    </table>
+                    <h5 class="ml-2 p-0">Example:</h5>
+                    <p class="ml-3 p-0">
+                        1.お金がなくても、おいしい物が食べたい。<br>
+                        2.毎日<ruby>働<rt>はたら</rt></ruby>いても、<ruby>貯金<rt>ちょきん</rt></ruby>がふえない。<br>
+                        3.日曜日でも、仕事に行きます。<br>
+                        4.この仕事は、日本語が上手じゃなくてもできます。
+                    </p>
+                </div>
             </div>
-        </div>
-        <div class="row justify-content-md-center mb-3">
-            <div class="col-lg-3">
-                <button type="button" class="btn btn-primary btn-sm w-100 fw-bold" onclick="createGrammar()">Gen script</button>
-            </div>
-        </div>
 
-        <div class="row mb-3">
-            <textarea class="col form-control" rows="4" id="grammarData"></textarea>
-        </div>
-        <div class="row justify-content-md-center mb-3">
-            <div class="col-lg-3">
-                <button type="button" class="btn btn-primary btn-sm w-100 fw-bold" onclick="convertGrammar()">Convert from script</button>
+            <div class="grammar">
+                <div class="row gram_header even">
+                    <div class="col-auto pr-0">
+                        <h4 class="p-0 m-0"><i class="fas fa-star"></i> 1～ても: </h4>
+                    </div>
+                    <div class="col text-end p-0">
+                        <button type="button" class="btn btn-outline-primary btn-sm w-auto" onclick="$('#gm_2').toggleClass('hide')"><i
+                            class="far fa-chevron-double-down"></i></button>
+                    </div>
+                </div>
+                <div class="gram_content hide even" id="gm_2">
+                    <h5 class="ml-2 p-0">Mean:</h5>
+                    <p class="ml-3 p-0">
+                        - mặc dù, cho dù<br>- dùng để giả định
+                    </p>
+                    <h5 class="ml-2 p-0">Grammar:</h5>
+                    <table class="table table-bordered border-primary align-middle w-auto ml-3 text-grammar">
+                        <td>
+                            ｖて<br>
+                            Nで<br>
+                            A<span class="txt-line">い</span>くて<br>
+                            A<span class="txt-line">な</span>で
+                        </td>
+                        <td>
+                            も
+                        </td>
+                    </table>
+                    <h5 class="ml-2 p-0">Example:</h5>
+                    <p class="ml-3 p-0">
+                        1.お金がなくても、おいしい物が食べたい。<br>
+                        2.毎日<ruby>働<rt>はたら</rt></ruby>いても、<ruby>貯金<rt>ちょきん</rt></ruby>がふえない。<br>
+                        3.日曜日でも、仕事に行きます。<br>
+                        4.この仕事は、日本語が上手じゃなくてもできます。
+                    </p>
+                </div>
             </div>
         </div>
     </div>
+    <div class="row justify-content-md-center mb-3">
+        <div class="col-lg-3">
+            <button type="button" class="btn btn-primary btn-sm w-100 fw-bold" onclick="genGrammar()">Grammar form
+                <i class="fas fa-plus-circle text-end"></i></button>
+        </div>
+    </div>
+    <div class="row justify-content-md-center mb-3">
+        <div class="col-lg-3">
+            <button type="button" class="btn btn-primary btn-sm w-100 fw-bold" onclick="createGrammar()">Gen
+                script</button>
+        </div>
+    </div>
+
+
+
+    <div class="row mb-3">
+        <textarea class="col form-control" rows="4" id="grammarData"></textarea>
+    </div>
+    <div class="row justify-content-md-center mb-3">
+        <div class="col-lg-3">
+            <button type="button" class="btn btn-primary btn-sm w-100 fw-bold" onclick="convertGrammar()">Convert
+                from script</button>
+        </div>
+    </div>
+    </div>
+
+
 
     <script src="js/gramIndex.js"></script>
 </body>

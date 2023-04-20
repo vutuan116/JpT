@@ -237,3 +237,59 @@ h1, h2, h3, h4, h5, h6{
     }
 }
 
+.grammar{
+    background-color: bisque;
+    margin-bottom: 2rem;
+    margin-top: 0rem;
+}
+
+.grammar.even{
+    background-color: thistle;
+}
+.pl-2{
+    padding-left: 1rem;
+}
+
+.label{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.w-auto{
+    width: auto!important;
+}
+
+.txt_line{
+    text-decoration: line-through!important;
+}
+
+.gram_header{
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    background-color: bisque;
+}
+.gram_header.even{
+    background-color: rgb(238, 222, 238);
+}
+
+
+.gram_content{
+    background-color: rgb(255, 239, 219);
+    padding: 0.5rem;
+}
+
+.gram_content.even{
+    background-color: thistle;
+}
+.pl-2{
+    padding-left: 1rem!important;
+}
+.pl-3{
+    padding-left: 2rem!important;
+}
+.ml-2{
+    margin-left: 1rem!important;
+}
+.ml-3{
+    margin-left: 2rem!important;
+}

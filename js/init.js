@@ -1,7 +1,8 @@
 var _levelJson = [];
 var _tuVungJson = [];
 var _kanjiJson = [];
-//var _listWordbook = [];
+var _grammarJson=[];
+var _listWordbook = [];
 
 $(document).ready(function () {
     tuVung.forEach(item => {
@@ -10,19 +11,28 @@ $(document).ready(function () {
     kanji.forEach(item => {
         _kanjiJson.push(item);
     });
-
+    grammar.forEach(item => {
+        _grammarJson.push(item);
+    });
+    
     viewListLevel();
     loadSetting();
     viewListLesson();
-    goHome();
+    goPage();
 
     $("#wb_kan_sel").on('change', () => {
         if ($("#wb_kan_sel").val() == "wordbook") {
             $("#wordbook_lesson_div").removeClass("hide");
             $("#kanji_lesson_div").addClass("hide");
-        } else {
+            $("#grammar_lesson_div").addClass("hide");
+        } else if ($("#wb_kan_sel").val() == "kanji"){
             $("#wordbook_lesson_div").addClass("hide");
             $("#kanji_lesson_div").removeClass("hide");
+            $("#grammar_lesson_div").addClass("hide");
+        }else{
+            $("#wordbook_lesson_div").addClass("hide");
+            $("#kanji_lesson_div").addClass("hide");
+            $("#grammar_lesson_div").removeClass("hide");
         }
     });
 
@@ -53,10 +63,12 @@ function viewListLesson() {
     let indexWb = 0;
     let htmlWb = "";
     let htmlKj = "";
+    let htmlGm = "";
     let level = $("#level_sel").val();
 
     $("#wordbook_lesson_div").empty();
     $("#kanji_lesson_div").empty();
+    $("#grammar_lesson_div").empty();
     _tuVungJson.forEach(x => {
         indexWb++;
         if (level == x.Level) {
@@ -89,5 +101,21 @@ function viewListLesson() {
         }
     });
     $("#kanji_lesson_div").html(htmlKj);
+
+    _grammarJson.forEach(x => {
+        indexWb++;
+        if (level == x.Level) {
+            let historyLs = lessonHistory.find((lsItem) => { return lsItem.Name == x.Lesson });
+            htmlGm = htmlGm +
+                `<tr>
+                    <td>
+                        <input class="cursor_pointer kj_lesson" type="checkbox" value="${x.Lesson}" id="wb_lesson_${indexWb}" onchange="wbLessonChange('kj')">
+                        <label class="cursor_pointer" for="wb_lesson_${indexWb}">&nbsp;${x.Lesson}</label>
+                    </td>
+                    <td class="text-end">${historyLs ? historyLs.Time : ''}</td>
+                </tr>`;
+        }
+    });
+    $("#grammar_lesson_div").html(htmlGm);
     $(".ls_selected").html("");
 }

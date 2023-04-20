@@ -1,7 +1,7 @@
 var gramEditor = [];
 var grammarIndex = 0;
-var chaSpec = "０１２３４５６７８９ー・　（）＆．＋？";
-var chaNorm = "0123456789-/ ()&.+?";
+var chaSpec = "ー・（）＆．＋？";
+var chaNorm = "-/()&.+?";
 
 $(document).ready(function () {
     genGrammar();
@@ -14,6 +14,7 @@ function genGrammar() {
             <div class="row mb-3">
                 <h5 class=" col-auto gra_label text-end form-label mb-0 pt-1">Label:</h5>
                 <input class="col form-control" type="text" id="label_gra_in_${grammarIndex}">
+                <p><strong>Solution with span:</strong> <span class="textarea" role="textbox" contenteditable></span></p>
             </div>
             <div class="row mb-3">
                 <h5 class="col-auto gra_label text-end form-label mb-0 pt-1">Mean:</h5>
@@ -73,7 +74,7 @@ function convertGrammar() {
     var jsonData = JSON.parse(txtData);
 
     $("#lesson").val(jsonData.Lesson);
-    $("#level").val(jsonData.Level);
+    $("#level").val(jsonData.Level).change();
 
     for (i = 0; i < jsonData.Data.length; i++) {
         if ($("#label_gra_in_" + (i + 1)).length==0){

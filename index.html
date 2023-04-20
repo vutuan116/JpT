@@ -20,7 +20,7 @@
                 <h1 class="h4 title" style="font-size: 32px">JwT Home</h1>
             </div>
         </div>
-        <div class="div_main menu">
+        <div class="div_main div_menu">
             <div class="row justify-content-md-center p-3 pt-1">
                 <div class="col-4 mt-2">
                     <div class="row">
@@ -70,6 +70,7 @@
                                 <select class="form-control text-primary" id="wb_kan_sel">
                                     <option value="wordbook">Wordbook</option>
                                     <option value="kanji">Kanji</option>
+                                    <option value="grammar">Grammar</option>
                                 </select>
                                 <h6 class="ls_selected"></h6>
                             </div>
@@ -79,6 +80,8 @@
                                         <tbody id="wordbook_lesson_div">
                                         </tbody>
                                         <tbody id="kanji_lesson_div">
+                                        </tbody>
+                                        <tbody id="grammar_lesson_div">
                                         </tbody>
                                     </table>
                                 </div>
@@ -92,7 +95,7 @@
             </div>
         </div>
 
-        <div class="div_main test_wb">
+        <div class="div_main div_word">
             <div class="row justify-content-md-center p-1">
                 <table class="table table-bordered table-striped fz_20 align-middle hi_de" cellspacing="0" width="100%" id="tbl_show_wordbook">
                     <thead class="bg-dark text-white">
@@ -141,6 +144,10 @@
                 </div>
             </div>
         </div>
+
+        <div class="div_main div_grammar">
+            
+        </div>
     </div>
     <div id="bottom"></div>
     <a class="btn_ontop" href="#top"><i class="fas fa-chevron-square-up opacity-50"></i></a>
@@ -151,6 +158,7 @@
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/data/tuvung.js"></script>
     <script src="js/data/kanji.js"></script>
+    <script src="js/data/grammar.js"></script>
 
     <script src="js/common.js"></script>
     <script src="js/help.js"></script>

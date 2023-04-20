@@ -15,8 +15,10 @@ function start() {
         var tempWb = [];
         if ($("#wb_kan_sel").val() == "wordbook") {
             tempWb = _tuVungJson.filter(y => y.Level == level && y.Lesson == lesson.value)[0];
-        } else {
+        } else if ($("#wb_kan_sel").val() == "kanji") {
             tempWb = _kanjiJson.filter(y => y.Level == level && y.Lesson == lesson.value)[0];
+        } else {
+            tempWb = _grammarJson.filter(y => y.Level == level && y.Lesson == lesson.value)[0];
         }
         _listWordbook = _listWordbook.concat(tempWb.Data);
     });
@@ -28,33 +30,55 @@ function start() {
     if (wordType == "hard") {
         _listWordbook = _listWordbook.filter(wb => wb.IsHard);
     }
-
     if (!_listWordbook || _listWordbook.length == 0) {
         alert("Không có từ phù hợp");
         return;
     }
 
-    genHtml();
-
-    $(".div_main").addClass("hide");
-    $(".test_wb").removeClass("hide");
+    if ($("#wb_kan_sel").val() == "grammar") {
+        genHtmlGrammar();
+        goPage("grammar");
+    } else {
+        genHtmlWord();
+        goPage("word");
+    }
 
     saveSetting();
 }
-
-function genHtml() {
+function genHtmlGrammar() {
     var html = "";
-    var index = 1;
-    var isShowRandom = $('#view_type_sel').val() == "show-random";
-    var isWordbookGen = $("#wb_kan_sel").val() == "wordbook";
-
-    hideEle("tbl_show_wordbook", "", !isWordbookGen);
-    hideEle("tbl_show_kanji", "", isWordbookGen);
-    _listWordbook.forEach(word => {
-        html += (isWordbookGen ? genHtmlForWordBook(index, word, isShowRandom) : genHtmlForKanji(index, word, isShowRandom));
+    var index = 0;
+    _listWordbook.forEach(gram => {
         index++;
+
+        var htmlMean = gram.Mean.replaceAll("\n", "<br>");
+        var htmlGm = genHtmlForGrammar(gram.Gram);
+
+        var htmlExam = genHtmlKanji(gram.Example.replaceAll("\n", "<br>"));
+
+        html +=
+            `<div class="grammar">
+                <div class="row gram_header">
+                    <div class="col-auto pr-0">
+                        <h4 class="p-0 m-0"><i class="fas fa-star"></i> ${index} ${gram.Label}: </h4>
+                    </div>
+                    <div class="col text-end p-0">
+                        <button type="button" class="btn btn-outline-primary btn-sm w-auto" onclick="$('#gm_${gram.Id}').toggleClass('hide')"><i class="far fa-chevron-double-down"></i></button>
+                    </div>
+                </div>
+                <div class="gram_content hide" id="gm_${gram.Id}">
+                    <h5 class="ml-2 p-0">Mean:</h5>
+                    <p class="ml-3 p-0">${htmlMean}</p>
+                    <h5 class="ml-2 p-0">Grammar:</h5>
+                    <table class="table table-bordered border-primary align-middle w-auto ml-3 text-grammar">
+                        ${htmlGm}
+                    </table>
+                    <h5 class="ml-2 p-0">Example:</h5>
+                    <p class="ml-3 p-0">${htmlExam}</p>
+                </div>
+            </div>`;
     });
-    $("#" + (isWordbookGen ? "tbl_show_wordbook" : "tbl_show_kanji") + " > tbody").html(html);
+    $(".div_grammar").html(html);
 }
 
 function genHtmlForWordBook(index, word, isShowRandom) {
@@ -144,7 +168,7 @@ function mixOnlyHardWb() {
 function saveAndBack() {
     saveLessonHistory();
     saveWordHard();
-    goHome();
+    goPage();
     viewListLesson();
 }
 
