@@ -98,10 +98,6 @@ p{
 .fa-eye{
     color: gray;
 }
-ruby {
-    display: inline-flex;
-    flex-direction: column-reverse;
-}
 
 .ls_selected{
     color: red;
@@ -109,13 +105,13 @@ ruby {
 .gre_color{
     color: rgb(9 36 167);
 }
-rb,
+
 rt {
-    display: inline;
     line-height: 0.75;
     font-size: 90%;
     color: red;
 }
+
 .td_1_20{
     width: 5%;
 }
