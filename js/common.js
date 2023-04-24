@@ -48,6 +48,6 @@ function wbLessonChange(type) {
 
 function goToHome(){
     if (confirm("Back to Home?") == true) {
-        goHome();
+        goPage();
       }
 }

@@ -25,9 +25,15 @@ function loadSetting() {
     if ($("#wb_kan_sel").val() == "wordbook") {
         $("#wordbook_lesson_div").removeClass("hide");
         $("#kanji_lesson_div").addClass("hide");
-    } else {
+        $("#grammar_lesson_div").addClass("hide");
+    } else if ($("#wb_kan_sel").val() == "kanji"){
         $("#wordbook_lesson_div").addClass("hide");
         $("#kanji_lesson_div").removeClass("hide");
+        $("#grammar_lesson_div").addClass("hide");
+    }else{
+        $("#wordbook_lesson_div").addClass("hide");
+        $("#kanji_lesson_div").addClass("hide");
+        $("#grammar_lesson_div").removeClass("hide");
     }
 }
 
@@ -71,9 +77,10 @@ function saveWordHard() {
     localStorage.setItem("wordHardHistory", JSON.stringify(wordHardHistory));
 }
 
-function goHome() {
+function goPage(page) {
     $(".div_main").addClass("hide");
-    $(".menu").removeClass("hide");
+    page = page ? page : "menu";
+    $(".div_" + page).removeClass("hide");
 }
 
 function toggleHideEle(_this) {
@@ -84,17 +91,17 @@ function toggleHideEle(_this) {
     $(_this).html(html);
 }
 
-function hideEle(valueId,typeId,isHide){
-    var ele = $("#"+valueId)[0];
-    if (typeId=="class"){
-        ele = $("."+valueId)[0];
+function hideEle(valueId, typeId, isHide) {
+    var ele = $("#" + valueId)[0];
+    if (typeId == "class") {
+        ele = $("." + valueId)[0];
     }
     if (!ele) return;
-    
-    if (isHide){
+
+    if (isHide) {
         $(ele).addClass("hide");
         $(ele).removeClass("hi_de");
-    }else{
+    } else {
         $(ele).addClass("hi_de");
         $(ele).removeClass("hide");
     }
@@ -115,4 +122,53 @@ function lessonChange(type) {
     }
 
     $(".ls_selected").html(listLs);
+}
+
+
+
+
+function genHtmlForGrammar(str) {
+    var result = "";
+    str = str.replaceAll("/", "<br>");
+    str = genHtmlUnderline(str);
+    str.split("+").forEach(x => {
+        result += `<td>` + x + `</td>`;
+    });
+    result = genHtmlKanji(result);
+    return result;
+}
+
+function genHtmlUnderline(text) {
+    regex = /-([^-]+)-/;
+    var undeline = regex.exec(text);
+    while (undeline) {
+        text = text.replace(undeline[0], `<span class="txt_line">${undeline[1]}</span>`);
+        undeline = regex.exec(text);
+    }
+    return text;
+}
+
+function genHtmlKanji(text) {
+    regex = /=([^=]+)=([^=]+)=/;
+    var kjReg = regex.exec(text);
+    while (kjReg) {
+        text = text.replace(kjReg[0], `<ruby>${kjReg[1]}<rt>${kjReg[2]}</rt></ruby>`);
+        kjReg = regex.exec(text);
+    }
+    return text;
+}
+
+function genHtmlWord() {
+    var html = "";
+    var index = 1;
+    var isShowRandom = $('#view_type_sel').val() == "show-random";
+    var isWordbookGen = $("#wb_kan_sel").val() == "wordbook";
+
+    hideEle("tbl_show_wordbook", "", !isWordbookGen);
+    hideEle("tbl_show_kanji", "", isWordbookGen);
+    _listWordbook.forEach(word => {
+        html += (isWordbookGen ? genHtmlForWordBook(index, word, isShowRandom) : genHtmlForKanji(index, word, isShowRandom));
+        index++;
+    });
+    $("#" + (isWordbookGen ? "tbl_show_wordbook" : "tbl_show_kanji") + " > tbody").html(html);
 }
