@@ -85,6 +85,16 @@ function goPage(page) {
 
 function toggleHideEle(_this) {
     var html = _this.innerHTML;
+    if (html.includes("td_kanji") && isLockKanji){
+        return;
+    }
+    if (html.includes("td_hira") && isLockHira){
+        return;
+    }
+    if (html.includes("td_mean") && isLockMean){
+        return;
+    }
+
     html = html.includes("hide") ?
         html.replace("hide", "hi_de")
         : html.replace("hi_de", "hide");
@@ -123,9 +133,6 @@ function lessonChange(type) {
 
     $(".ls_selected").html(listLs);
 }
-
-
-
 
 function genHtmlForGrammar(str) {
     var result = "";
