@@ -75,8 +75,8 @@ function showAll(elementClassId) {
 }
 
 var isLockKanji = true;
-var isLockHira = true;
-var isLockMean = true;
+var isLockHira = false;
+var isLockMean = false;
 
 function lockShowHide(elementClass) {
     var element = $(".lock_" + elementClass);
