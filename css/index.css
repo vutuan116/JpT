@@ -95,7 +95,7 @@ p{
 .show{
     color: white!important;
 }
-.fa-eye{
+.off{
     color: gray;
 }
 
@@ -130,6 +130,10 @@ rt {
 .fl_right{
     float: right;
 }
+.fl_left{
+    float: left;
+}
+
 .bd_l_0{
     border-left: 0px;
 }
@@ -288,4 +292,10 @@ h1, h2, h3, h4, h5, h6{
 }
 .ml-3{
     margin-left: 2rem!important;
+}
+.max-w-fit{
+    max-width: fit-content!important;
+}
+.fas{
+    cursor: pointer;
 }
