@@ -86,7 +86,7 @@ function genHtmlForWordBook(index, word, isShowRandom) {
     var isShowHira = isShowRandom ? getRandomInt(0, 100) % 2 == 0 : true;
     resultHtml +=
         `<td class="td_wHard pr-0 bd_r_0">
-            <label class="lb_no" onclick="$('#star_wb_${word.Id}').click()">${index}</label>
+            <!--<label class="lb_no" onclick="$('#star_wb_${word.Id}').click()">${index}</label>-->
             <i id="star_wb_${word.Id}" value="${word.Id}" class="fas fa-star btn_wordhard ${word.IsHard ? "on" : ""}" value="${word.Id}" onclick="this.classList.toggle('on')"></i>
         </td>`;
 
@@ -111,7 +111,7 @@ function genHtmlForKanji(index, word, isShowRandom) {
 
     resultHtml +=
         `<td class="td_wHard pr-0 bd_r_0">
-            <label class="lb_no" onclick="$('#star_kj_${word.Id}').click()">${index}</label>
+            <!--<label class="lb_no" onclick="$('#star_kj_${word.Id}').click()">${index}</label>-->
             <i id="star_kj_${word.Id}" value="${word.Id}" class="fas fa-star btn_wordhard ${word.IsHard ? "on" : ""}" value="${word.Id}" onclick="this.classList.toggle('on')"></i>
         </td>`;
 
@@ -123,7 +123,7 @@ function genHtmlForKanji(index, word, isShowRandom) {
 
     resultHtml +=
         `<td class="" onclick="toggleHideEle(this)">
-            <span class="wb td_hiragana ${isShowRandom && isShowKanji ? "hide" : "hi_de"}">${word.Hira}
+            <span class="wb td_hira ${isShowRandom && isShowKanji ? "hide" : "hi_de"}">${word.Hira}
             </span>
         </td>`;
     resultHtml +=
@@ -170,19 +170,4 @@ function saveAndBack() {
     saveWordHard();
     goPage();
     viewListLesson();
-}
-
-function showAll(elementClassId) {
-    var colElement = $("." + elementClassId);
-    if (colElement[0].outerHTML.includes("hide")) {
-        colElement.each(x => {
-            $(colElement[x]).removeClass("hide");
-            $(colElement[x]).addClass("hi_de");
-        });
-    } else {
-        colElement.each(x => {
-            $(colElement[x]).removeClass("hi_de");
-            $(colElement[x]).addClass("hide");
-        });
-    }
 }

@@ -117,17 +117,34 @@
                     <thead class="bg-dark text-white">
                         <tr>
                             <th class="th-sm td_6_20 text-center" colspan="2">
-                                Kanji
-                                <i class="fas fa-eye fl_right mt-1" onclick="showAll('td_kanji')"></i>
+                                <div class="row p-0 m-0">
+                                    <div class="col align-self-center p-0 m-0">Kanji</div>
+                                    <div class="col max-w-fit p-0 m-0">
+                                        <i class="fas fa-lock lock_kanji" onclick="lockShowHide('kanji')"></i>
+                                        <br>
+                                        <i class="fas fa-eye eye_kanji" onclick="showAll('td_kanji')"></i>
+                                    </div>
+                                </div>
                             </th>
                             <th class="th-sm td_7_20 text-center">
-                                Hiragana
-                                <i class="fas fa-eye fl_right mt-1" onclick="showAll('td_hiragana')"></i>
+                                <div class="row p-0 m-0">
+                                    <div class="col align-self-center p-0 m-0">Hira</div>
+                                    <div class="col max-w-fit p-0 m-0">
+                                        <i class="fas fa-lock lock_hira off" onclick="lockShowHide('hira')"></i>
+                                        <br>
+                                        <i class="fas fa-eye eye_hira" onclick="showAll('td_hira')"></i>
+                                    </div>
+                                </div>
                             </th>
                             <th class="th-sm td_7_20 text-center">
-                                CnVi<br>
-                                Mean
-                                <label class="fl_right"><i class="fas fa-eye mt-1" onclick="showAll('td_mean')"></i></label>
+                                <div class="row p-0 m-0">
+                                    <div class="col align-self-center p-0 m-0">Mean</div>
+                                    <div class="col max-w-fit p-0 m-0">
+                                        <i class="fas fa-lock lock_mean off" onclick="lockShowHide('mean')"></i>
+                                        <br>
+                                        <i class="fas fa-eye eye_mean" onclick="showAll('td_mean')"></i>
+                                    </div>
+                                </div>
                             </th>
                         </tr>
                     </thead>

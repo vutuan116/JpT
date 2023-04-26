@@ -1,4 +1,3 @@
-
 function derangeArray(listItem) {
     let result = [];
     while (listItem.length > 0) {
@@ -46,8 +45,51 @@ function wbLessonChange(type) {
     $(".ls_selected").html(listLs);
 }
 
-function goToHome(){
+function goToHome() {
     if (confirm("Back to Home?") == true) {
         goPage();
-      }
+    }
+}
+
+function showAll(elementClassId) {
+    var colElement = $("." + elementClassId);
+    var isOff = false;
+    if (colElement[0].outerHTML.includes("hide")) {
+        colElement.each(x => {
+            $(colElement[x]).removeClass("hide");
+            $(colElement[x]).addClass("hi_de");
+        });
+    } else {
+        isOff = true;
+        colElement.each(x => {
+            $(colElement[x]).removeClass("hi_de");
+            $(colElement[x]).addClass("hide");
+        });
+    }
+    if (isOff) {
+        $("." + elementClassId.replace("td_", "eye_")).addClass("off");
+
+    } else {
+        $("." + elementClassId.replace("td_", "eye_")).removeClass("off");
+    }
+}
+
+var isLockKanji = true;
+var isLockHira = false;
+var isLockMean = false;
+
+function lockShowHide(elementClass) {
+    var element = $(".lock_" + elementClass);
+    var isOn = element.attr("class").includes("off");
+    if (isOn) {
+        element.removeClass("off");
+        isLockKanji = elementClass == "kanji" ? true : isLockKanji;
+        isLockHira = elementClass == "hira" ? true : isLockHira;
+        isLockMean = elementClass == "mean" ? true : isLockMean;
+    } else {
+        element.addClass("off");
+        isLockKanji = elementClass == "kanji" ? false : isLockKanji;
+        isLockHira = elementClass == "hira" ? false : isLockHira;
+        isLockMean = elementClass == "mean" ? false : isLockMean;
+    }
 }
