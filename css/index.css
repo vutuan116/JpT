@@ -26,7 +26,7 @@ body{
     }
 }
 ruby{
-    vertical-align: middle;
+    /* vertical-align: middle; */
 }
 .title{
     margin-top: 1.5rem;
@@ -230,7 +230,7 @@ h1, h2, h3, h4, h5, h6{
         bottom: 59px!important;
         right: 5px!important;
     }
-    
+
     .container{
         padding: 1rem!important;
         max-width: 632px!important;
