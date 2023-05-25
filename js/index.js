@@ -52,7 +52,7 @@ function genHtmlGrammar() {
         index++;
 
         var htmlMean = gram.Mean.replaceAll("\n", "<br>");
-        var htmlGm = genHtmlForGrammar(gram.Gram);
+        var htmlGm = genHtmlForGrammar(gram.Grammar);
 
         var htmlExam = genHtmlKanji(gram.Example.replaceAll("\n", "<br>"));
 
