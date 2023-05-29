@@ -60,7 +60,7 @@ function genHtmlGrammar() {
             `<div class="grammar">
                 <div class="row gram_header">
                     <div class="col-auto pr-0">
-                        <h4 class="p-0 m-0"><i class="fas fa-star"></i> ${index} ${gram.Label}: </h4>
+                        <h4 class="p-0 m-0"><i class="fas fa-star"></i> <!--${index}--> ${gram.Label}: </h4>
                     </div>
                     <div class="col text-end p-0">
                         <button type="button" class="btn btn-outline-primary btn-sm w-auto" onclick="$('#gm_${gram.Id}').toggleClass('hide')"><i class="far fa-chevron-double-down"></i></button>
