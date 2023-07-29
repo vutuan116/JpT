@@ -182,8 +182,8 @@ rt {
 }
 .btn_gohome{
     position: fixed;
-    bottom: 72px!important;
-    right: 10px!important;
+    bottom: 75px!important;
+    right: 9px!important;
     z-index: 10000;
     color: green;
     font-size: 28px;
