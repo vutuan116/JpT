@@ -142,7 +142,7 @@ function mixWb() {
     saveWordHard();
     _listWordbook = derangeArray(_listWordbook);
 
-    genHtml();
+    genHtmlWord();
 
     $(".btn_ontop")[0].click();
 }
@@ -161,7 +161,7 @@ function mixOnlyHardWb() {
 
     _listWordbook = derangeArray(listWbHard);
 
-    genHtml();
+    genHtmlWord();
     $(".btn_ontop")[0].click();
 }
 
