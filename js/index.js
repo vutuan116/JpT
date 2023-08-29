@@ -83,23 +83,34 @@ function genHtmlGrammar() {
 
 function genHtmlForWordBook(index, word, isShowRandom) {
     let resultHtml = `<tr>`;
-    var isShowHira = isShowRandom ? getRandomInt(0, 100) % 2 == 0 : true;
+    var isShowHira = isShowRandom ? getRandomInt(0, 100) % 3 == 0 : true;
+    var isShowKanji = isShowRandom ? getRandomInt(0, 100) % 3 == 0 : true;
+    var isShowMean = isShowRandom ? isShowHira || isShowKanji ? false : true : true;
+
+    isShowHira = isShowRandom && word.Kanji == "" ? isShowMean == false : isShowHira;
+
     resultHtml +=
         `<td class="td_wHard pr-0 bd_r_0">
-            <!--<label class="lb_no" onclick="$('#star_wb_${word.Id}').click()">${index}</label>-->
-            <i id="star_wb_${word.Id}" value="${word.Id}" class="fas fa-star btn_wordhard ${word.IsHard ? "on" : ""}" value="${word.Id}" onclick="this.classList.toggle('on')"></i>
+            <!--<label class="lb_no" onclick="$('#star_kj_${word.Id}').click()">${index}</label>-->
+            <i id="star_kj_${word.Id}" value="${word.Id}" class="fas fa-star btn_wordhard ${word.IsHard ? "on" : ""}" value="${word.Id}" onclick="this.classList.toggle('on')"></i>
         </td>`;
 
     resultHtml +=
         `<td class="bd_l_0" onclick="toggleHideEle(this)">
-            <ruby class="wb td_wordbook ${isShowHira ? "hi_de" : "hide"}">${word.Hira}
-                <rt>${word.Kanji}</rt>
-            </ruby>
+            <span class="wb td_kanji ${isShowKanji ? "hi_de" : "hide"}">${word.Kanji}
+            </span>
         </td>`;
 
     resultHtml +=
+        `<td class="" onclick="toggleHideEle(this)">
+            <span class="wb td_hira ${isShowHira ? "hi_de" : "hide"}">${word.Hira}
+            </span>
+        </td>`;
+    resultHtml +=
         `<td class="lineh-1" onclick="toggleHideEle(this)">
-            <span class="td_mean ${isShowRandom && isShowHira ? "hide" : "hi_de"}">${word.Mean}</span>
+            <p class="m-0 td_mean ${isShowMean ? "hi_de" : "hide"}">
+            <span>${word.Mean}</span>
+            </p>
         </td>`;
 
     return resultHtml;

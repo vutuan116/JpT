@@ -100,13 +100,35 @@
                 <table class="table table-bordered table-striped fz_20 align-middle hi_de" cellspacing="0" width="100%" id="tbl_show_wordbook">
                     <thead class="bg-dark text-white">
                         <tr>
-                            <th class="th-sm td_10_20 text-center" colspan="2">
-                                Wordbook
-                                <i class="fas fa-eye fl_right mt-1" onclick="showAll('td_wordbook')"></i>
+                            <th class="th-sm td_6_20 text-center" colspan="2">
+                                <div class="row p-0 m-0">
+                                    <div class="col align-self-center p-0 m-0">Kanji</div>
+                                    <div class="col max-w-fit p-0 m-0">
+                                        <i class="fas fa-lock lock_kanji" onclick="lockShowHide('kanji')"></i>
+                                        <br>
+                                        <i class="fas fa-eye eye_kanji" onclick="showAll('td_kanji')"></i>
+                                    </div>
+                                </div>
                             </th>
-                            <th class="th-sm td_10_20 text-center">
-                                Meaning 
-                                <i class="fas fa-eye fl_right mt-1" onclick="showAll('td_mean')"></i>
+                            <th class="th-sm td_7_20 text-center">
+                                <div class="row p-0 m-0">
+                                    <div class="col align-self-center p-0 m-0">Hira</div>
+                                    <div class="col max-w-fit p-0 m-0">
+                                        <i class="fas fa-lock lock_hira off" onclick="lockShowHide('hira')"></i>
+                                        <br>
+                                        <i class="fas fa-eye eye_hira" onclick="showAll('td_hira')"></i>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="th-sm td_7_20 text-center">
+                                <div class="row p-0 m-0">
+                                    <div class="col align-self-center p-0 m-0">Mean</div>
+                                    <div class="col max-w-fit p-0 m-0">
+                                        <i class="fas fa-lock lock_mean off" onclick="lockShowHide('mean')"></i>
+                                        <br>
+                                        <i class="fas fa-eye eye_mean" onclick="showAll('td_mean')"></i>
+                                    </div>
+                                </div>
                             </th>
                         </tr>
                     </thead>
