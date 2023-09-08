@@ -179,3 +179,8 @@ function genHtmlWord() {
     });
     $("#" + (isWordbookGen ? "tbl_show_wordbook" : "tbl_show_kanji") + " > tbody").html(html);
 }
+
+function turnOnWordHard(){
+    $('.btn_wordhard').addClass("on");
+    $('.word-hard-btn').removeClass("off");
+}
