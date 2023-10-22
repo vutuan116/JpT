@@ -52,7 +52,11 @@ function genHtmlGrammar() {
         index++;
 
         var htmlMean = gram.Mean.replaceAll("\n", "<br>");
-        var htmlGm = genHtmlForGrammar(gram.Grammar);
+
+        var htmlGm = "";
+        gram.Grammar.split("\n").forEach(x => {
+            htmlGm = htmlGm + genHtmlForGrammar(x);
+        })
 
         var htmlExam = genHtmlKanji(gram.Example.replaceAll("\n", "<br>"));
 
@@ -70,9 +74,7 @@ function genHtmlGrammar() {
                     <h5 class="ml-2 p-0">Mean:</h5>
                     <p class="ml-3 p-0">${htmlMean}</p>
                     <h5 class="ml-2 p-0">Grammar:</h5>
-                    <table class="table table-bordered border-primary align-middle w-auto ml-3 text-grammar">
-                        ${htmlGm}
-                    </table>
+                    ${htmlGm}
                     <h5 class="ml-2 p-0">Example:</h5>
                     <p class="ml-3 p-0">${htmlExam}</p>
                 </div>
@@ -81,40 +83,40 @@ function genHtmlGrammar() {
     $(".div_grammar").html(html);
 }
 
-function genHtmlForWordBook(index, word, isShowRandom) {
-    let resultHtml = `<tr>`;
-    var isShowHira = isShowRandom ? getRandomInt(0, 100) % 3 == 0 : true;
-    var isShowKanji = isShowRandom ? getRandomInt(0, 100) % 3 == 0 : true;
-    var isShowMean = isShowRandom ? isShowHira || isShowKanji ? false : true : true;
+// function genHtmlForWordBook(index, word, isShowRandom) {
+//     let resultHtml = `<tr>`;
+//     var isShowHira = isShowRandom ? getRandomInt(0, 100) % 3 == 0 : true;
+//     var isShowKanji = isShowRandom ? getRandomInt(0, 100) % 3 == 0 : true;
+//     var isShowMean = isShowRandom ? isShowHira || isShowKanji ? false : true : true;
 
-    isShowHira = isShowRandom && word.Kanji == "" ? isShowMean == false : isShowHira;
+//     isShowHira = isShowRandom && word.Kanji == "" ? isShowMean == false : isShowHira;
 
-    resultHtml +=
-        `<td class="td_wHard pr-0 bd_r_0">
-            <!--<label class="lb_no" onclick="$('#star_kj_${word.Id}').click()">${index}</label>-->
-            <i id="star_kj_${word.Id}" value="${word.Id}" class="fas fa-star btn_wordhard ${word.IsHard ? "on" : ""}" value="${word.Id}" onclick="this.classList.toggle('on')"></i>
-        </td>`;
+//     resultHtml +=
+//         `<td class="td_wHard pr-0 bd_r_0">
+//             <!--<label class="lb_no" onclick="$('#star_kj_${word.Id}').click()">${index}</label>-->
+//             <i id="star_kj_${word.Id}" value="${word.Id}" class="fas fa-star btn_wordhard ${word.IsHard ? "on" : ""}" value="${word.Id}" onclick="this.classList.toggle('on')"></i>
+//         </td>`;
 
-    resultHtml +=
-        `<td class="bd_l_0" onclick="toggleHideEle(this)">
-            <span class="wb td_kanji ${isShowKanji ? "hi_de" : "hide"}">${word.Kanji}
-            </span>
-        </td>`;
+//     resultHtml +=
+//         `<td class="bd_l_0" onclick="toggleHideEle(this)">
+//             <span class="wb td_kanji ${isShowKanji ? "hi_de" : "hide"}">${word.Kanji}
+//             </span>
+//         </td>`;
 
-    resultHtml +=
-        `<td class="" onclick="toggleHideEle(this)">
-            <span class="wb td_hira ${isShowHira ? "hi_de" : "hide"}">${word.Hira}
-            </span>
-        </td>`;
-    resultHtml +=
-        `<td class="lineh-1" onclick="toggleHideEle(this)">
-            <p class="m-0 td_mean ${isShowMean ? "hi_de" : "hide"}">
-            <span>${word.Mean}</span>
-            </p>
-        </td>`;
+//     resultHtml +=
+//         `<td class="" onclick="toggleHideEle(this)">
+//             <span class="wb td_hira ${isShowHira ? "hi_de" : "hide"}">${word.Hira}
+//             </span>
+//         </td>`;
+//     resultHtml +=
+//         `<td class="lineh-1" onclick="toggleHideEle(this)">
+//             <p class="m-0 td_mean ${isShowMean ? "hi_de" : "hide"}">
+//             <span>${word.Mean}</span>
+//             </p>
+//         </td>`;
 
-    return resultHtml;
-}
+//     return resultHtml;
+// }
 
 function genHtmlForKanji(index, word, isShowRandom) {
     let resultHtml = `<tr>`;
@@ -137,14 +139,24 @@ function genHtmlForKanji(index, word, isShowRandom) {
             <span class="wb td_hira ${isShowRandom && isShowKanji ? "hide" : "hi_de"}">${word.Hira}
             </span>
         </td>`;
-    resultHtml +=
-        `<td class="lineh-1" onclick="toggleHideEle(this)">
+
+    if (word.CnVi == undefined) {
+        resultHtml +=
+            `<td class="lineh-1" onclick="toggleHideEle(this)">
+            <p class="m-0 td_mean ${isShowRandom && isShowKanji ? "hide" : "hi_de"}">
+            <span>${word.Mean}</span>
+            </p>
+        </td>`;
+    } else {
+        resultHtml +=
+            `<td class="lineh-1" onclick="toggleHideEle(this)">
             <p class="m-0 td_mean ${isShowRandom && isShowKanji ? "hide" : "hi_de"}">
             <label class="cnvi">${word.CnVi}</label>
             <br>
             <span>${word.Mean}</span>
             </p>
         </td>`;
+    }
 
     return resultHtml;
 }

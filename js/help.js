@@ -135,13 +135,15 @@ function lessonChange(type) {
 }
 
 function genHtmlForGrammar(str) {
-    var result = "";
+    var result = `<table class="table table-bordered border-primary align-middle w-auto ml-3 text-grammar">`;
     str = str.replaceAll("/", "<br>");
     str = genHtmlUnderline(str);
     str.split("+").forEach(x => {
         result += `<td>` + x + `</td>`;
     });
     result = genHtmlKanji(result);
+
+    result = result+ `</table>`;
     return result;
 }
 
@@ -171,13 +173,11 @@ function genHtmlWord() {
     var isShowRandom = $('#view_type_sel').val() == "show-random";
     var isWordbookGen = $("#wb_kan_sel").val() == "wordbook";
 
-    hideEle("tbl_show_wordbook", "", !isWordbookGen);
-    hideEle("tbl_show_kanji", "", isWordbookGen);
     _listWordbook.forEach(word => {
-        html += (isWordbookGen ? genHtmlForWordBook(index, word, isShowRandom) : genHtmlForKanji(index, word, isShowRandom));
+        html += genHtmlForKanji(index, word, isShowRandom);
         index++;
     });
-    $("#" + (isWordbookGen ? "tbl_show_wordbook" : "tbl_show_kanji") + " > tbody").html(html);
+    $("#tbl_show_wordbook" + " > tbody").html(html);
 }
 
 function turnOnWordHard(){
