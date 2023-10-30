@@ -3,7 +3,8 @@ var lessonHistory = [];
 var wordHardHistory = [];
 
 function loadSetting() {
-    menuSetting = JSON.parse(localStorage.getItem("menuSetting") ?? "{}");
+    // menuSetting = JSON.parse(localStorage.getItem("menuSetting") ?? "{}");
+
     if (menuSetting.Level) {
         $("#level_sel").val(menuSetting.Level);
     }
@@ -19,8 +20,8 @@ function loadSetting() {
         $("#wb_kan_sel").val("wordbook");
     }
 
-    lessonHistory = JSON.parse(localStorage.getItem("lessonHistory") ?? "[]");
-    wordHardHistory = JSON.parse(localStorage.getItem("wordHardHistory") ?? "[]");
+    // lessonHistory = JSON.parse(localStorage.getItem("lessonHistory") ?? "[]");
+    // wordHardHistory = JSON.parse(localStorage.getItem("wordHardHistory") ?? "[]");
 
     if ($("#wb_kan_sel").val() == "wordbook") {
         $("#wordbook_lesson_div").removeClass("hide");
@@ -43,7 +44,8 @@ function saveSetting() {
     menuSetting.WordType = $("#word_type_sel").val();
     menuSetting.WordKan = $("#wb_kan_sel").val();
 
-    localStorage.setItem("menuSetting", JSON.stringify(menuSetting));
+    // localStorage.setItem("menuSetting", JSON.stringify(menuSetting));
+    writeDataToFireBase("menuSetting", JSON.stringify(menuSetting));
 }
 
 function saveLessonHistory() {
@@ -57,7 +59,8 @@ function saveLessonHistory() {
         }
     });
 
-    localStorage.setItem("lessonHistory", JSON.stringify(lessonHistory));
+    // localStorage.setItem("lessonHistory", JSON.stringify(lessonHistory));
+    writeDataToFireBase("lessonHistory", JSON.stringify(lessonHistory));
 }
 
 function saveWordHard() {
@@ -74,7 +77,8 @@ function saveWordHard() {
         wordHardHistory.push(wordId);
         _listWordbook.filter(wb => wb.Id == wordId)[0].IsHard = true;
     });
-    localStorage.setItem("wordHardHistory", JSON.stringify(wordHardHistory));
+    // localStorage.setItem("wordHardHistory", JSON.stringify(wordHardHistory));
+    writeDataToFireBase("wordHardHistory", JSON.stringify(wordHardHistory));
 }
 
 function goPage(page) {

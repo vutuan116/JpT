@@ -3,8 +3,10 @@ var _tuVungJson = [];
 var _kanjiJson = [];
 var _grammarJson=[];
 var _listWordbook = [];
+var user_Id="tuannv";
 
-$(document).ready(function () {
+
+function startPage() {
     tuVung.forEach(item => {
         _tuVungJson.push(item);
     });
@@ -42,7 +44,7 @@ $(document).ready(function () {
     $(".btn_wordhard").on('click', () => {
         this.toggleClass("on");
     });
-});
+}
 
 function viewListLevel() {
     _levelJson = [];
