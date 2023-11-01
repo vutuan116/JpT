@@ -3,8 +3,6 @@ var lessonHistory = [];
 var wordHardHistory = [];
 
 function loadSetting() {
-    // menuSetting = JSON.parse(localStorage.getItem("menuSetting") ?? "{}");
-
     if (menuSetting.Level) {
         $("#level_sel").val(menuSetting.Level);
     }
@@ -19,9 +17,6 @@ function loadSetting() {
     } else {
         $("#wb_kan_sel").val("wordbook");
     }
-
-    // lessonHistory = JSON.parse(localStorage.getItem("lessonHistory") ?? "[]");
-    // wordHardHistory = JSON.parse(localStorage.getItem("wordHardHistory") ?? "[]");
 
     if ($("#wb_kan_sel").val() == "wordbook") {
         $("#wordbook_lesson_div").removeClass("hide");
@@ -43,8 +38,6 @@ function saveSetting() {
     menuSetting.ViewType = $("#view_type_sel").val();
     menuSetting.WordType = $("#word_type_sel").val();
     menuSetting.WordKan = $("#wb_kan_sel").val();
-
-    // localStorage.setItem("menuSetting", JSON.stringify(menuSetting));
     writeDataToFireBase("menuSetting", JSON.stringify(menuSetting));
 }
 
@@ -58,8 +51,6 @@ function saveLessonHistory() {
             lessonHistory.push({ "Name": listLessonSelected[x].value, "Time": new Date().yyyyMMdd() })
         }
     });
-
-    // localStorage.setItem("lessonHistory", JSON.stringify(lessonHistory));
     writeDataToFireBase("lessonHistory", JSON.stringify(lessonHistory));
 }
 
@@ -77,7 +68,6 @@ function saveWordHard() {
         wordHardHistory.push(wordId);
         _listWordbook.filter(wb => wb.Id == wordId)[0].IsHard = true;
     });
-    // localStorage.setItem("wordHardHistory", JSON.stringify(wordHardHistory));
     writeDataToFireBase("wordHardHistory", JSON.stringify(wordHardHistory));
 }
 
@@ -175,7 +165,6 @@ function genHtmlWord() {
     var html = "";
     var index = 1;
     var isShowRandom = $('#view_type_sel').val() == "show-random";
-    var isWordbookGen = $("#wb_kan_sel").val() == "wordbook";
 
     _listWordbook.forEach(word => {
         html += genHtmlForKanji(index, word, isShowRandom);
