@@ -46,9 +46,9 @@ function saveLessonHistory() {
     listLessonSelected.each(x => {
         let ls = lessonHistory.find(lsItem => lsItem.Name == listLessonSelected[x].value);
         if (ls) {
-            ls.Time = new Date().yyyyMMdd();
+            ls.Time = new Date().getDateTimeStr();
         } else {
-            lessonHistory.push({ "Name": listLessonSelected[x].value, "Time": new Date().yyyyMMdd() })
+            lessonHistory.push({ "Name": listLessonSelected[x].value, "Time": new Date().getDateTimeStr() })
         }
     });
     writeDataToFireBase("lessonHistory", JSON.stringify(lessonHistory));

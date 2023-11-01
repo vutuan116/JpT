@@ -63,6 +63,9 @@ p{
 .btn_wordhard.on:hover{
     color: #fdcf45;
 }
+.color_star{
+    color: #ffcd39;
+}
 .lb_no{
     width: 21px!important;
     text-align: end;

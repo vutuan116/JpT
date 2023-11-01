@@ -75,12 +75,14 @@ function viewListLesson() {
         indexWb++;
         if (level == x.Level) {
             let historyLs = lessonHistory.find(lsItem => lsItem.Name == x.Lesson);
+            let countHard = x.Data.filter(z=> wordHardHistory.includes(z.Id.toString())).length;
             htmlWb = htmlWb +
                 `<tr>
                     <td>
                         <input class="cursor_pointer wb_lesson" type="checkbox" value="${x.Lesson}" id="wb_lesson_${indexWb}" onchange="lessonChange('wb')">
                         <label class="cursor_pointer" for="wb_lesson_${indexWb}">&nbsp;${x.Lesson}</label>
                     </td>
+                    <td>${countHard==0 ? '':`<i class="fas fa-star color_star"></i> `+ countHard}</td>
                     <td class="text-end">${historyLs ? historyLs.Time : ''}</td>
                 </tr>`;
         }
@@ -92,12 +94,14 @@ function viewListLesson() {
         indexWb++;
         if (level == x.Level) {
             let historyLs = lessonHistory.find((lsItem) => { return lsItem.Name == x.Lesson });
+            let countHard = x.Data.filter(z=> wordHardHistory.includes(z.Id.toString())).length;
             htmlKj = htmlKj +
                 `<tr>
                     <td>
                         <input class="cursor_pointer kj_lesson" type="checkbox" value="${x.Lesson}" id="wb_lesson_${indexWb}" onchange="wbLessonChange('kj')">
                         <label class="cursor_pointer" for="wb_lesson_${indexWb}">&nbsp;${x.Lesson}</label>
                     </td>
+                    <td>${countHard==0 ? '':`<i class="fas fa-star color_star"></i> `+ countHard}</td>
                     <td class="text-end">${historyLs ? historyLs.Time : ''}</td>
                 </tr>`;
         }
