@@ -105,7 +105,7 @@ function genHtmlForKanji(index, word, isShowRandom) {
             </span>
         </td>`;
 
-    if (word.CnVi == undefined) {
+    if (word.CnVi == undefined || word.CnVi == "") {
         resultHtml +=
             `<td class="lineh-1" onclick="toggleHideEle(this)">
             <p class="m-0 td_mean ${isShowRandom && isShowKanji ? "hide" : "hi_de"}">
