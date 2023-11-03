@@ -23,6 +23,7 @@ function startPage() {
     goPage();
 
     $("#wb_kan_sel").on('change', () => {
+        $("input[type=checkbox]:checked").prop('checked', false); 
         if ($("#wb_kan_sel").val() == "wordbook") {
             $("#wordbook_lesson_div").removeClass("hide");
             $("#kanji_lesson_div").addClass("hide");
@@ -36,6 +37,7 @@ function startPage() {
             $("#kanji_lesson_div").addClass("hide");
             $("#grammar_lesson_div").removeClass("hide");
         }
+
     });
 
     $(".btn_repeat").on('click', () => {
