@@ -37,7 +37,7 @@ function startPage() {
             $("#kanji_lesson_div").addClass("hide");
             $("#grammar_lesson_div").removeClass("hide");
         }
-
+        $(".ls_selected").empty();
     });
 
     $(".btn_repeat").on('click', () => {
