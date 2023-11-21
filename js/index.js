@@ -20,7 +20,12 @@ function start() {
         } else {
             tempWb = _grammarJson.filter(y => y.Level == level && y.Lesson == lesson.value)[0];
         }
-        _listWordbook = _listWordbook.concat(tempWb.Data);
+        if (lessonHistory.some(ls => ls.Name == lesson.value)) {
+            _listWordbook = _listWordbook.concat(derangeArray(tempWb.Data));
+        } else {
+            _listWordbook = _listWordbook.concat(tempWb.Data);
+        }
+
     });
 
     _listWordbook.forEach(wb1 => {
@@ -28,7 +33,7 @@ function start() {
     });
 
     if (wordType == "hard") {
-        _listWordbook = _listWordbook.filter(wb => wb.IsHard);
+        _listWordbook = derangeArray(_listWordbook.filter(wb => wb.IsHard));
     }
     if (!_listWordbook || _listWordbook.length == 0) {
         alert("Không có từ phù hợp");
