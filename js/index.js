@@ -11,21 +11,16 @@ function start() {
     let wordType = $("#word_type_sel").val();
 
     listLesson.each(x => {
-        var lesson = listLesson[x];
+        var lesson = listLesson[x].value;
         var tempWb = [];
         if ($("#wb_kan_sel").val() == "wordbook") {
-            tempWb = _tuVungJson.filter(y => y.Level == level && y.Lesson == lesson.value)[0];
+            tempWb = _tuVungJson.filter(y => y.Level == level && y.Lesson == lesson)[0];
         } else if ($("#wb_kan_sel").val() == "kanji") {
-            tempWb = _kanjiJson.filter(y => y.Level == level && y.Lesson == lesson.value)[0];
+            tempWb = _kanjiJson.filter(y => y.Level == level && y.Lesson == lesson)[0];
         } else {
-            tempWb = _grammarJson.filter(y => y.Level == level && y.Lesson == lesson.value)[0];
+            tempWb = _grammarJson.filter(y => y.Level == level && y.Lesson == lesson)[0];
         }
-        if (lessonHistory.some(ls => ls.Name == lesson.value)) {
-            _listWordbook = _listWordbook.concat(derangeArray(tempWb.Data));
-        } else {
-            _listWordbook = _listWordbook.concat(tempWb.Data);
-        }
-
+        _listWordbook = _listWordbook.concat(tempWb.Data);
     });
 
     _listWordbook.forEach(wb1 => {
