@@ -361,3 +361,24 @@ h6 {
 .fas {
     cursor: pointer;
 }
+
+.cl_green{
+    color: #4FC31E!important;
+}
+
+.cl_greenyellow{
+    color: #81C31E!important;
+}
+
+.cl_yellow{
+    color: #B2C31E!important;
+}
+
+.cl_yellowred{
+    color: #C3A71E!important;
+}
+
+.cl_red{
+    color: #C31E1E!important;
+}
+

@@ -17,11 +17,19 @@ Date.prototype.hhmmss = function () {
 };
 
 Date.prototype.getDateTimeStr = function () {
+    var yyyy = this.getFullYear();
     var MM = this.getMonth() + 1;
     var dd = this.getDate();
 
-    return [MM < 10 ? '0' + MM : MM, dd < 10 ? '0' + dd : dd].join('-');
+    return [yyyy, MM < 10 ? '0' + MM : MM, dd < 10 ? '0' + dd : dd].join('-');
 };
+
+function getDayBefore(dateOldStr){
+    var dateOld = Date.parse(dateOldStr);
+    var dateNow = Date.parse(new Date().getDateTimeStr());
+    var timeDiff= dateNow - dateOld;
+    return (timeDiff/86400000); 
+}
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;

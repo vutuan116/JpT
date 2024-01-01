@@ -1,9 +1,9 @@
 var _levelJson = [];
 var _tuVungJson = [];
 var _kanjiJson = [];
-var _grammarJson=[];
+var _grammarJson = [];
 var _listWordbook = [];
-var user_Id="tuannv";
+var user_Id = "tuannv";
 
 
 function startPage() {
@@ -16,23 +16,23 @@ function startPage() {
     grammar.forEach(item => {
         _grammarJson.push(item);
     });
-    
+
     viewListLevel();
     loadSetting();
     viewListLesson();
     goPage();
 
     $("#wb_kan_sel").on('change', () => {
-        $("input[type=checkbox]:checked").prop('checked', false); 
+        $("input[type=checkbox]:checked").prop('checked', false);
         if ($("#wb_kan_sel").val() == "wordbook") {
             $("#wordbook_lesson_div").removeClass("hide");
             $("#kanji_lesson_div").addClass("hide");
             $("#grammar_lesson_div").addClass("hide");
-        } else if ($("#wb_kan_sel").val() == "kanji"){
+        } else if ($("#wb_kan_sel").val() == "kanji") {
             $("#wordbook_lesson_div").addClass("hide");
             $("#kanji_lesson_div").removeClass("hide");
             $("#grammar_lesson_div").addClass("hide");
-        }else{
+        } else {
             $("#wordbook_lesson_div").addClass("hide");
             $("#kanji_lesson_div").addClass("hide");
             $("#grammar_lesson_div").removeClass("hide");
@@ -77,15 +77,18 @@ function viewListLesson() {
         indexWb++;
         if (level == x.Level) {
             let historyLs = lessonHistory.find(lsItem => lsItem.Name == x.Lesson);
-            let countHard = x.Data.filter(z=> wordHardHistory.includes(z.Id.toString())).length;
+            let history = historyLs ? getDayBefore(historyLs.Time) : -1;
+            let colorHistory = history > 14 ? "cl_red" : history > 10 ? "cl_yellowred" : history > 7 ? "cl_yellow" : history > 4 ? "cl_greenyellow" : "cl_green";
+
+            let countHard = x.Data.filter(z => wordHardHistory.includes(z.Id.toString())).length;
             htmlWb = htmlWb +
                 `<tr>
                     <td>
                         <input class="cursor_pointer wb_lesson" type="checkbox" value="${x.Lesson}" id="wb_lesson_${indexWb}" onchange="lessonChange('wb')">
                         <label class="cursor_pointer" for="wb_lesson_${indexWb}">&nbsp;${x.Lesson}</label>
                     </td>
-                    <td>${countHard==0 ? '':`<i class="fas fa-star color_star"></i> `+ countHard}</td>
-                    <td class="text-end">${historyLs ? historyLs.Time : ''}</td>
+                    <td>${countHard == 0 ? '' : `<i class="fas fa-star color_star"></i> ` + countHard}</td>
+                    <td class="text-end fw-bold ${colorHistory}">${history == -1 ? "" : history}</td>
                 </tr>`;
         }
     });
@@ -96,14 +99,14 @@ function viewListLesson() {
         indexWb++;
         if (level == x.Level) {
             let historyLs = lessonHistory.find((lsItem) => { return lsItem.Name == x.Lesson });
-            let countHard = x.Data.filter(z=> wordHardHistory.includes(z.Id.toString())).length;
+            let countHard = x.Data.filter(z => wordHardHistory.includes(z.Id.toString())).length;
             htmlKj = htmlKj +
                 `<tr>
                     <td>
                         <input class="cursor_pointer kj_lesson" type="checkbox" value="${x.Lesson}" id="wb_lesson_${indexWb}" onchange="wbLessonChange('kj')">
                         <label class="cursor_pointer" for="wb_lesson_${indexWb}">&nbsp;${x.Lesson}</label>
                     </td>
-                    <td>${countHard==0 ? '':`<i class="fas fa-star color_star"></i> `+ countHard}</td>
+                    <td>${countHard == 0 ? '' : `<i class="fas fa-star color_star"></i> ` + countHard}</td>
                     <td class="text-end">${historyLs ? historyLs.Time : ''}</td>
                 </tr>`;
         }
