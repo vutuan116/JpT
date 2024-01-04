@@ -24,6 +24,14 @@ Date.prototype.getDateTimeStr = function () {
     return [yyyy, MM < 10 ? '0' + MM : MM, dd < 10 ? '0' + dd : dd].join('-');
 };
 
+function convertStrDateToMMdd (dateStr) {
+    let date = new Date(dateStr);
+    var MM = date.getMonth() + 1;
+    var dd = date.getDate();
+
+    return [MM < 10 ? '0' + MM : MM, dd < 10 ? '0' + dd : dd].join('-');
+};
+
 function getDayBefore(dateOldStr){
     var dateOld = Date.parse(dateOldStr);
     var dateNow = Date.parse(new Date().getDateTimeStr());

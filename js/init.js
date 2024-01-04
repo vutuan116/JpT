@@ -88,7 +88,7 @@ function viewListLesson() {
                         <label class="cursor_pointer" for="wb_lesson_${indexWb}">&nbsp;${x.Lesson}</label>
                     </td>
                     <td>${countHard == 0 ? '' : `<i class="fas fa-star color_star"></i> ` + countHard}</td>
-                    <td class="text-end fw-bold ${colorHistory}">${history == -1 ? "" : history}</td>
+                    <td class="text-end ${colorHistory}">${historyLs ? convertStrDateToMMdd(historyLs.Time) : ''} </td>
                 </tr>`;
         }
     });
@@ -99,6 +99,10 @@ function viewListLesson() {
         indexWb++;
         if (level == x.Level) {
             let historyLs = lessonHistory.find((lsItem) => { return lsItem.Name == x.Lesson });
+            let history = historyLs ? getDayBefore(historyLs.Time) : -1;
+            let colorHistory = history > 14 ? "cl_red" : history > 10 ? "cl_yellowred" : history > 7 ? "cl_yellow" : history > 4 ? "cl_greenyellow" : "cl_green";
+
+
             let countHard = x.Data.filter(z => wordHardHistory.includes(z.Id.toString())).length;
             htmlKj = htmlKj +
                 `<tr>
@@ -107,7 +111,7 @@ function viewListLesson() {
                         <label class="cursor_pointer" for="wb_lesson_${indexWb}">&nbsp;${x.Lesson}</label>
                     </td>
                     <td>${countHard == 0 ? '' : `<i class="fas fa-star color_star"></i> ` + countHard}</td>
-                    <td class="text-end">${historyLs ? historyLs.Time : ''}</td>
+                    <td class="text-end ${colorHistory}">${historyLs ? convertStrDateToMMdd(historyLs.Time) : ''}</td>
                 </tr>`;
         }
     });
