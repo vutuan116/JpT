@@ -197,7 +197,7 @@ rt {
 }
 
 .hide {
-    display: none;
+    display: none !important;
 }
 
 .w-80 {
@@ -382,3 +382,14 @@ h6 {
     color: #C31E1E!important;
 }
 
+.div_loading{
+    height: 100vh;
+    z-index: 10000;
+    position: fixed;
+    width: 100%;
+    max-width: 768px;
+    background: white;
+    top: 0px;
+    align-items: center;
+    opacity: 0.8;
+}
