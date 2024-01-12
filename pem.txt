@@ -1,1 +1,20 @@
 
+index.html
+    <div class="d-flex justify-content-center div_loading">
+        <div class="spinner-grow text-success" role="status"></div>
+        <div class="spinner-grow text-warning m-3" role="status"></div>
+        <div class="spinner-grow text-danger" role="status"></div>
+    </div>
+
+index.js
+	function start() {
+		...
+		$(".eye_hira").click();
+		$(".eye_mean").click();
+	}
+
+init.js
+	function startPage() {
+		...
+		$(".div_loading").addClass("hide");
+	}
