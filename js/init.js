@@ -46,6 +46,7 @@ function startPage() {
     $(".btn_wordhard").on('click', () => {
         this.toggleClass("on");
     });
+    $(".div_loading").addClass("hide");
 }
 
 function viewListLevel() {

@@ -44,6 +44,9 @@ function start() {
     }
 
     saveSetting();
+
+    $(".eye_hira").click();
+    $(".eye_mean").click();
 }
 function genHtmlGrammar() {
     var html = "";
