@@ -9,9 +9,16 @@ function start() {
 
     let level = $("#level_sel").val();
     let wordType = $("#word_type_sel").val();
+    let mixWb = false;
 
     listLesson.each(x => {
         var lesson = listLesson[x].value;
+
+        let historyLs = lessonHistory.find(lsItem => lsItem.Name == lesson);
+        if (historyLs){
+            mixWb = true;
+        }
+
         var tempWb = [];
         if ($("#wb_kan_sel").val() == "wordbook") {
             tempWb = _tuVungJson.filter(y => y.Level == level && y.Lesson == lesson)[0];
@@ -44,6 +51,10 @@ function start() {
     }
 
     saveSetting();
+
+    if (mixWb){
+        $(".mix_btn").click();
+    }
 
     $(".eye_hira").click();
     $(".eye_mean").click();
