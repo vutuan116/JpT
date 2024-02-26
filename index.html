@@ -34,8 +34,7 @@
                             <h4><i class="fas fa-graduation-cap"></i></h4>
                         </div>
                         <div class="col-sm px-1">
-                            <select class="form-control" id="level_sel"
-                                onchange="viewListLesson(this.value)">
+                            <select class="form-control" id="level_sel" onchange="viewListLesson(this.value)">
                             </select>
                         </div>
                     </div>
@@ -103,7 +102,8 @@
 
         <div class="div_main div_word hide">
             <div class="row justify-content-md-center p-1">
-                <table class="table table-bordered table-striped fz_20 align-middle hi_de" cellspacing="0" width="100%" id="tbl_show_wordbook">
+                <table class="table table-bordered table-striped fz_20 align-middle hi_de" cellspacing="0" width="100%"
+                    id="tbl_show_wordbook">
                     <thead class="bg-dark text-white">
                         <tr>
                             <td class="td_wHard pr-0 bd_r_0 text-center align-middle">
@@ -145,18 +145,28 @@
                     </tbody>
                 </table>
                 <div class="col-lg-4 mb-4 text-center">
-                    <button type="button" class="mix_btn btn mt-2 btn-primary btn-sm fw-bold w-80"
-                    onclick="mixWb()"><i class="fad fa-random"></i> Mix</button>
-                    <button type="button" class="btn mt-2 btn-primary btn-sm fw-bold w-80"
-                    onclick="mixOnlyHardWb()"><i class="fad fa-random"></i> Mix Only <i class="fas fa-star"></i></button>
-                    <button type="button" class="btn mt-2 btn-primary btn-sm fw-bold w-80"
-                        onclick="saveAndBack()"><i class="fas fa-save"></i> Save & Back <i class="fad fa-sign-out"></i></button>
+                    <button type="button" class="mix_btn btn mt-2 btn-primary btn-sm fw-bold w-80" onclick="mixWb()">
+                        <i class="fad fa-random"></i> Mix</button>
+                    <button type="button" class="btn mt-2 btn-primary btn-sm fw-bold w-80" onclick="mixOnlyHardWb()">
+                        <i class="fad fa-random"></i> Mix Only <i class="fas fa-star"></i></button>
+
+                    <div class="mt-2 cl_green">
+                        <input class="cursor_pointer" type="checkbox" id="isProcessing">
+                        <label class="cursor_pointer" for="isProcessing">
+                            <strong>Is Processing </strong><i class="fad fa-spinner"></i>
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-sm fw-bold w-80" onclick="saveAndBack()">
+                        <i class="fas fa-save"></i>
+                        Save & Back
+                        <i class="fad fa-sign-out"></i>
+                    </button>
                 </div>
             </div>
         </div>
 
         <div class="div_main div_grammar">
-            
+
         </div>
     </div>
     <div id="bottom"></div>
@@ -167,7 +177,7 @@
 
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
-    
+
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/data/tuvung.js"></script>
@@ -180,4 +190,5 @@
     <script src="js/init.js"></script>
     <script src="js/firebase.js"></script>
 </body>
+
 </html>

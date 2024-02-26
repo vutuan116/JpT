@@ -43,15 +43,19 @@ function saveSetting() {
 
 function saveLessonHistory() {
     let listLessonSelected = $("input[type=checkbox]:checked");
+    let isProcessing = $('#isProcessing').is(":checked");
     listLessonSelected.each(x => {
         let ls = lessonHistory.find(lsItem => lsItem.Name == listLessonSelected[x].value);
         if (ls) {
             ls.Time = new Date().getDateTimeStr();
+            ls.IsProcessing = isProcessing;
         } else {
-            lessonHistory.push({ "Name": listLessonSelected[x].value, "Time": new Date().getDateTimeStr() })
+            lessonHistory.push({ "Name": listLessonSelected[x].value, "Time": new Date().getDateTimeStr(), "IsProcessing":isProcessing })
         }
     });
     writeDataToFireBase("lessonHistory", JSON.stringify(lessonHistory));
+
+    $('#isProcessing').prop('checked', false);
 }
 
 function saveWordHard() {

@@ -15,7 +15,7 @@ function start() {
         var lesson = listLesson[x].value;
 
         let historyLs = lessonHistory.find(lsItem => lsItem.Name == lesson);
-        if (historyLs){
+        if (historyLs && historyLs.IsProcessing == false){
             mixWb = true;
         }
 
