@@ -14,7 +14,7 @@ body {
 
 @media only screen and (max-width: 992px) {
     .height_1per3 {
-        height: 34vh !important;
+        height: 40vh !important;
     }
 
     .title {
@@ -58,7 +58,7 @@ p {
 
 .lesson_div {
     overflow: auto;
-    height: 50vh;
+    height: 60vh;
 }
 
 .bg_darkmode {
