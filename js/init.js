@@ -74,7 +74,7 @@ function viewListLesson() {
     $("#wordbook_lesson_div").empty();
     $("#kanji_lesson_div").empty();
     $("#grammar_lesson_div").empty();
-    _tuVungJson.filter(y=> y.Level == level).forEach(x => {
+    _tuVungJson.filter(y => y.Level == level).forEach(x => {
         indexWb++;
 
         let historyLs = lessonHistory.find(lsItem => lsItem.Name == x.Lesson);
@@ -88,7 +88,7 @@ function viewListLesson() {
                         <input class="cursor_pointer wb_lesson" type="checkbox" value="${x.Lesson}" id="wb_lesson_${indexWb}" onchange="lessonChange('wb')">
                         <label class="cursor_pointer" for="wb_lesson_${indexWb}">&nbsp;${x.Lesson}</label>
                     </td>
-                    <td>${historyLs&&historyLs.IsProcessing?`<i class="ml-3 fad fa-spinner"></i>`: countHard == 0 ? '' : `<i class="fas fa-star color_star"></i> ` + countHard + ` / ` + x.Data.length}</td>
+                    <td>${historyLs && historyLs.IsProcessing ? `<i class="ml-3 fad fa-spinner"></i>` : countHard == 0 ? '' : `<i class="fas fa-star color_star"></i> ` + countHard + ` / ` + x.Data.length}</td>
                     <td class="text-end ${colorHistory}">${historyLs ? convertStrDateToMMdd(historyLs.Time) : ''} </td>
                 </tr>`;
     });
@@ -110,7 +110,7 @@ function viewListLesson() {
                         <input class="cursor_pointer kj_lesson" type="checkbox" value="${x.Lesson}" id="wb_lesson_${indexWb}" onchange="wbLessonChange('kj')">
                         <label class="cursor_pointer" for="wb_lesson_${indexWb}">&nbsp;${x.Lesson}</label>
                     </td>
-                    <td>${historyLs&&historyLs.IsProcessing?`<i class="ml-3 fad fa-spinner"></i>`: countHard == 0 ? '' : `<i class="fas fa-star color_star"></i> ` + countHard+ ` / ` + x.Data.length}</td>
+                    <td>${historyLs && historyLs.IsProcessing ? `<i class="ml-3 fad fa-spinner"></i>` : countHard == 0 ? '' : `<i class="fas fa-star color_star"></i> ` + countHard + ` / ` + x.Data.length}</td>
                     <td class="text-end ${colorHistory}">${historyLs ? convertStrDateToMMdd(historyLs.Time) : ''}</td>
                 </tr>`;
         }
@@ -133,4 +133,15 @@ function viewListLesson() {
     });
     $("#grammar_lesson_div").html(htmlGm);
     $(".ls_selected").html("");
+}
+
+function viewHistoryLearning() {
+    let html = "";
+    lessonHistory.sort((a, b) => new Date(a.Time).getTime() - new Date(b.Time).getTime()).forEach(x => {
+        html = `<tr>
+                    <td>${x.Name}</td>
+                    <td>${x.Time}</td>
+                </tr>` + html;
+    });
+    $("#history_learning").html(html);
 }

@@ -9,15 +9,9 @@ function start() {
 
     let level = $("#level_sel").val();
     let wordType = $("#word_type_sel").val();
-    // let mixWb = false;
 
     listLesson.each(x => {
         var lesson = listLesson[x].value;
-
-        // let historyLs = lessonHistory.find(lsItem => lsItem.Name == lesson);
-        // if (historyLs && historyLs.IsProcessing == false){
-        //     mixWb = true;
-        // }
 
         var tempWb = [];
         if ($("#wb_kan_sel").val() == "wordbook") {
@@ -51,10 +45,6 @@ function start() {
     }
 
     saveSetting();
-
-    // if (mixWb){
-    //     $(".mix_btn").click();
-    // }
 
     $(".eye_hira").click();
     $(".eye_mean").click();
@@ -142,10 +132,12 @@ function genHtmlForKanji(index, word, isShowRandom) {
 
 function mixWb() {
     saveWordHard();
+    
     _listWordbook = derangeArray(_listWordbook);
-
     genHtmlWord();
 
+    $(".eye_hira").click();
+    $(".eye_mean").click();
     $(".btn_ontop")[0].click();
 }
 
@@ -162,8 +154,10 @@ function mixOnlyHardWb() {
     });
 
     _listWordbook = derangeArray(listWbHard);
-
     genHtmlWord();
+
+    $(".eye_hira").click();
+    $(".eye_mean").click();
     $(".btn_ontop")[0].click();
 }
 
