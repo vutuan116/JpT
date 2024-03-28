@@ -20,6 +20,7 @@ function startPage() {
     viewListLevel();
     loadSetting();
     viewListLesson();
+    viewHistoryLearning();
     goPage();
 
     $("#wb_kan_sel").on('change', () => {
