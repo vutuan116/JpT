@@ -166,4 +166,5 @@ function saveAndBack() {
     saveWordHard();
     goPage();
     viewListLesson();
+    viewHistoryLearning();
 }
