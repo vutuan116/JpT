@@ -168,3 +168,16 @@ function saveAndBack() {
     viewListLesson();
     viewHistoryLearning();
 }
+
+function scrollLesson(page) {
+    $(".lesson_div").scrollTop(0);
+    var lsIndex = 0;
+    if (page == "wordbook") {
+        lsIndex = lsWbIndexLast;
+    } else if (page == "kanji") {
+        lsIndex = lsKjIndexLast;
+    } else {
+        return;
+    }
+    $(".lesson_div").scrollTop($("#wb_lesson_" + lsIndex).offset().top - $("#wb_lesson_" + lsIndex).parent().outerHeight() * 7);
+}

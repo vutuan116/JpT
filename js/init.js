@@ -4,7 +4,8 @@ var _kanjiJson = [];
 var _grammarJson = [];
 var _listWordbook = [];
 var user_Id = "tuannv";
-
+var lsWbIndexLast = 0;
+var lsKjIndexLast = 0;
 
 function startPage() {
     tuVung.forEach(item => {
@@ -39,6 +40,8 @@ function startPage() {
             $("#grammar_lesson_div").removeClass("hide");
         }
         $(".ls_selected").empty();
+
+        scrollLesson($("#wb_kan_sel").val());
     });
 
     $(".btn_repeat").on('click', () => {
@@ -92,21 +95,24 @@ function viewListLesson() {
                     <td>${historyLs && historyLs.IsProcessing ? `<i class="ml-3 fad fa-spinner"></i>` : countHard == 0 ? '' : `<i class="fas fa-star color_star"></i> ` + countHard + ` / ` + x.Data.length}</td>
                     <td class="text-end ${colorHistory}">${historyLs ? convertStrDateToMMdd(historyLs.Time) : ''} </td>
                 </tr>`;
+
+        if (historyLs) {
+            lsWbIndexLast = indexWb;
+        }
     });
 
     $("#wordbook_lesson_div").html(htmlWb);
 
-    _kanjiJson.forEach(x => {
+    _kanjiJson.filter(y => y.Level == level).forEach(x => {
         indexWb++;
-        if (level == x.Level) {
-            let historyLs = lessonHistory.find((lsItem) => { return lsItem.Name == x.Lesson });
-            let history = historyLs ? getDayBefore(historyLs.Time) : -1;
-            let colorHistory = history > 14 ? "cl_red" : history > 10 ? "cl_yellowred" : history > 7 ? "cl_yellow" : history > 4 ? "cl_greenyellow" : "cl_green";
+        let historyLs = lessonHistory.find((lsItem) => { return lsItem.Name == x.Lesson });
+        let history = historyLs ? getDayBefore(historyLs.Time) : -1;
+        let colorHistory = history > 14 ? "cl_red" : history > 10 ? "cl_yellowred" : history > 7 ? "cl_yellow" : history > 4 ? "cl_greenyellow" : "cl_green";
 
 
-            let countHard = x.Data.filter(z => wordHardHistory.includes(z.Id.toString())).length;
-            htmlKj = htmlKj +
-                `<tr>
+        let countHard = x.Data.filter(z => wordHardHistory.includes(z.Id.toString())).length;
+        htmlKj = htmlKj +
+            `<tr>
                     <td>
                         <input class="cursor_pointer kj_lesson" type="checkbox" value="${x.Lesson}" id="wb_lesson_${indexWb}" onchange="wbLessonChange('kj')">
                         <label class="cursor_pointer" for="wb_lesson_${indexWb}">&nbsp;${x.Lesson}</label>
@@ -114,6 +120,9 @@ function viewListLesson() {
                     <td>${historyLs && historyLs.IsProcessing ? `<i class="ml-3 fad fa-spinner"></i>` : countHard == 0 ? '' : `<i class="fas fa-star color_star"></i> ` + countHard + ` / ` + x.Data.length}</td>
                     <td class="text-end ${colorHistory}">${historyLs ? convertStrDateToMMdd(historyLs.Time) : ''}</td>
                 </tr>`;
+
+        if (historyLs) {
+            lsKjIndexLast = indexWb;
         }
     });
     $("#kanji_lesson_div").html(htmlKj);
@@ -134,6 +143,8 @@ function viewListLesson() {
     });
     $("#grammar_lesson_div").html(htmlGm);
     $(".ls_selected").html("");
+
+    scrollLesson($("#wb_kan_sel").val());
 }
 
 function viewHistoryLearning() {
