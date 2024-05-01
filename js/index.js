@@ -93,39 +93,31 @@ function genHtmlForKanji(index, word, isShowRandom) {
 
     resultHtml +=
         `<td class="td_wHard pr-0 bd_r_0">
-            <!--<label class="lb_no" onclick="$('#star_kj_${word.Id}').click()">${index}</label>-->
             <i id="star_kj_${word.Id}" value="${word.Id}" class="fas fa-star btn_wordhard ${word.IsHard ? "on" : ""}" value="${word.Id}" onclick="this.classList.toggle('on')"></i>
         </td>`;
 
     resultHtml +=
-        `<td class="bd_l_0" onclick="toggleHideEle(this)">
-            <span class="wb td_kanji ${isShowKanji ? "hi_de" : "hide"}">${word.Kanji}
-            </span>
+        `<td class="bd_l_0 bd_r_0" onclick="toggleHideEle(this)">
+            <span class="wb td_kanji ${isShowKanji ? "hi_de" : "hide"}">${word.Kanji}</span>
+        </td>
+        <td class="bd_l_0 max-w-20px pl-0">
+            <i class="far fa-copy td_kanji float-end" onclick='navigator.clipboard.writeText("${word.Kanji}");showToast();'></i>
         </td>`;
 
     resultHtml +=
         `<td class="" onclick="toggleHideEle(this)">
-            <span class="wb td_hira ${isShowRandom && isShowKanji ? "hide" : "hi_de"}">${word.Hira}
-            </span>
+            <span class="wb td_hira ${isShowRandom && isShowKanji ? "hide" : "hi_de"}">${word.Hira}</span>
         </td>`;
 
-    if (word.CnVi == undefined || word.CnVi == "") {
+    resultHtml +=
+        `<td class="lineh-1" onclick="toggleHideEle(this)">
+            <p class="m-0 td_mean ${isShowRandom && isShowKanji ? "hide" : "hi_de"}">`;
+    if (!(!word.CnVi || word.CnVi == undefined || word.CnVi == "")){
         resultHtml +=
-            `<td class="lineh-1" onclick="toggleHideEle(this)">
-            <p class="m-0 td_mean ${isShowRandom && isShowKanji ? "hide" : "hi_de"}">
-            <span>${word.Mean}</span>
-            </p>
-        </td>`;
-    } else {
-        resultHtml +=
-            `<td class="lineh-1" onclick="toggleHideEle(this)">
-            <p class="m-0 td_mean ${isShowRandom && isShowKanji ? "hide" : "hi_de"}">
-            <label class="cnvi">${word.CnVi}</label>
-            <br>
-            <span>${word.Mean}</span>
-            </p>
-        </td>`;
+            `<label class="cnvi">${word.CnVi}</label> <br>`;
     }
+    resultHtml += `<span>${word.Mean}</span>
+                </p></td>`;
 
     return resultHtml;
 }

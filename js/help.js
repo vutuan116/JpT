@@ -181,3 +181,12 @@ function turnOnWordHard(){
     $('.btn_wordhard').addClass("on");
     $('.word-hard-btn').removeClass("off");
 }
+
+function showToast(content){
+    if (!content || content==""){
+        content = "Copyed!";
+    }
+    $(".toast-body").html(content);
+    $(".toast").show();
+    setTimeout(()=>{$(".toast").hide();},1000);
+}

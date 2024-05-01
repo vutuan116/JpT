@@ -11,7 +11,9 @@ body {
 .test_wb td {
     height: 60px;
 }
-
+.ml-auto{
+    margin-left: auto;
+}
 @media only screen and (max-width: 992px) {
     .height_1per3 {
         height: 40vh !important;
@@ -246,7 +248,7 @@ h6 {
 }
 
 .pl-0 {
-    padding-left: 0rem;
+    padding-left: 0rem!important;;
 }
 
 .pr-1 {
@@ -358,6 +360,14 @@ h6 {
     max-width: fit-content !important;
 }
 
+.max-w-0px {
+    max-width: 0px !important;
+}
+
+.max-w-20px {
+    max-width: 20px !important;
+}
+
 .fas {
     cursor: pointer;
 }
@@ -392,4 +402,12 @@ h6 {
     top: 0px;
     align-items: center;
     opacity: 0.8;
+}
+
+.toast{
+    width: 80px;
+    position: fixed;
+    top: 10px !important;
+    right: 10px !important;
+    z-index: 10000;
 }
