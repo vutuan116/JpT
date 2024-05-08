@@ -190,12 +190,3 @@ function copyText(_this, text){
         setTimeout(()=>{$(_this).css("color","black")},1000);
     }
 }
-
-// function showToast(content){
-//     if (!content || content==""){
-//         content = "Copyed!";
-//     }
-//     $(".toast-body").html(content);
-//     $(".toast").show();
-//     setTimeout(()=>{$(".toast").hide();},1000);
-// }
