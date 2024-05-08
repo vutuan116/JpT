@@ -183,9 +183,12 @@ function turnOnWordHard(){
 }
 
 function copyText(_this, text){
-    navigator.clipboard.writeText(text);
-    $(_this).css("color","red");
-    setTimeout(()=>{$(_this).css("color","gray")},1000);
+    var isEnableCopy = !$(".lock_kanji").attr("class").includes("off");
+    if (isEnableCopy){
+        navigator.clipboard.writeText(text);
+        $(_this).css("color","red");
+        setTimeout(()=>{$(_this).css("color","black")},1000);
+    }
 }
 
 // function showToast(content){

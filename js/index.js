@@ -101,10 +101,7 @@ function genHtmlForKanji(index, word, isShowRandom) {
 
     resultHtml +=
         `<td class="bd_l_0 bd_r_0" onclick="toggleHideEle(this)">
-            <span class="wb td_kanji ${isShowKanji ? "hi_de" : "hide"}">${word.Kanji}</span>
-        </td>
-        <td class="bd_l_0 max-w-copy pl-0">
-            <i class="far fa-copy td_kanji cursor_pointer btn-copy" onclick='copyText(this,"${word.Kanji}")'></i>
+            <span class="wb td_kanji cursor_pointer ${isShowKanji ? "hi_de" : "hide"}" onclick='copyText(this,"${word.Kanji}")'>${word.Kanji}</span>
         </td>`;
 
     resultHtml +=
