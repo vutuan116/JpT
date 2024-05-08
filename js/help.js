@@ -182,11 +182,17 @@ function turnOnWordHard(){
     $('.word-hard-btn').removeClass("off");
 }
 
-function showToast(content){
-    if (!content || content==""){
-        content = "Copyed!";
-    }
-    $(".toast-body").html(content);
-    $(".toast").show();
-    setTimeout(()=>{$(".toast").hide();},1000);
+function copyText(_this, text){
+    navigator.clipboard.writeText(text);
+    $(_this).css("color","red");
+    setTimeout(()=>{$(_this).css("color","gray")},1000);
 }
+
+// function showToast(content){
+//     if (!content || content==""){
+//         content = "Copyed!";
+//     }
+//     $(".toast-body").html(content);
+//     $(".toast").show();
+//     setTimeout(()=>{$(".toast").hide();},1000);
+// }

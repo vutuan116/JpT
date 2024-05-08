@@ -264,6 +264,23 @@ h6 {
     padding-right: 0.2rem;
 }
 
+.ml-0 {
+    margin-left: 0rem!important;;
+}
+
+.ml-1 {
+    margin-left: 0.25rem;
+}
+
+.ml-2 {
+    margin-left: 0.5rem;
+}
+
+.btn-copy{
+    font-size: 18px;
+    color: gray;
+}
+
 @media only screen and (max-width: 768px) {
     #tbl_body_list_wordbook {
         font-size: 20px;
@@ -364,8 +381,8 @@ h6 {
     max-width: 0px !important;
 }
 
-.max-w-20px {
-    max-width: 20px !important;
+.max-w-copy {
+    max-width: 15px !important;
 }
 
 .fas {

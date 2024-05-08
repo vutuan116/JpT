@@ -90,6 +90,9 @@ function genHtmlGrammar() {
 function genHtmlForKanji(index, word, isShowRandom) {
     let resultHtml = `<tr>`;
     var isShowKanji = isShowRandom ? getRandomInt(0, 100) % 2 == 0 : true;
+    if (!word.Kanji || word.Kanji==""){
+        word.Kanji = word.Hira;
+    }
 
     resultHtml +=
         `<td class="td_wHard pr-0 bd_r_0">
@@ -100,8 +103,8 @@ function genHtmlForKanji(index, word, isShowRandom) {
         `<td class="bd_l_0 bd_r_0" onclick="toggleHideEle(this)">
             <span class="wb td_kanji ${isShowKanji ? "hi_de" : "hide"}">${word.Kanji}</span>
         </td>
-        <td class="bd_l_0 max-w-20px pl-0">
-            <i class="far fa-copy td_kanji float-end" onclick='navigator.clipboard.writeText("${word.Kanji}");showToast();'></i>
+        <td class="bd_l_0 max-w-copy pl-0">
+            <i class="far fa-copy td_kanji cursor_pointer btn-copy" onclick='copyText(this,"${word.Kanji}")'></i>
         </td>`;
 
     resultHtml +=
