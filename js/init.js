@@ -149,7 +149,7 @@ function viewListLesson() {
 
 function viewHistoryLearning() {
     let html = "";
-    lessonHistory.sort((a, b) => new Date(a.Time).getTime() - new Date(b.Time).getTime()).slice(lessonHistory.length - 6, lessonHistory.length).forEach(x => {
+    lessonHistory.slice(lessonHistory.length - 6, lessonHistory.length).forEach(x => {
         html = `<tr>
                     <td>${x.Name}</td>
                     <td>${x.Time}</td>

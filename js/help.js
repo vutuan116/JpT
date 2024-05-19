@@ -47,10 +47,7 @@ function saveLessonHistory() {
     listLessonSelected.each(x => {
         let ls = lessonHistory.find(lsItem => lsItem.Name == listLessonSelected[x].value);
         if (ls) {
-            ls.Time = new Date().getDateTimeStr();
-            ls.IsProcessing = isProcessing;
-        } else {
-            lessonHistory.push({ "Name": listLessonSelected[x].value, "Time": new Date().getDateTimeStr(), "IsProcessing":isProcessing })
+            lessonHistory.splice(lessonHistory.indexOf(ls),1);
         }
     });
     writeDataToFireBase("lessonHistory", JSON.stringify(lessonHistory));
