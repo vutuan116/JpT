@@ -49,7 +49,7 @@ function saveLessonHistory() {
         if (ls) {
             lessonHistory.splice(lessonHistory.indexOf(ls),1);
         }
-        lessonHistory.push({ "Name": listLessonSelected[x].value, "Time": new Date().getDateTimeStr(), "IsProcessing":isProcessing })
+        lessonHistory.push({ "Name": listLessonSelected[x].value, "Time": new Date().getDateTimeStr() +" "+ new Date().hhmmss(), "IsProcessing":isProcessing })
     });
     writeDataToFireBase("lessonHistory", JSON.stringify(lessonHistory));
 

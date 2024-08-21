@@ -74,6 +74,9 @@ function viewListLesson() {
     let htmlKj = "";
     let htmlGm = "";
     let level = $("#level_sel").val();
+    let lsWbLastDate = new Date(0);
+    let lsKjLastDate = new Date(0);
+
 
     $("#wordbook_lesson_div").empty();
     $("#kanji_lesson_div").empty();
@@ -96,7 +99,8 @@ function viewListLesson() {
                     <td class="text-end ${colorHistory}">${historyLs ? convertStrDateToMMdd(historyLs.Time) : ''} </td>
                 </tr>`;
 
-        if (historyLs) {
+        if (historyLs && new Date(historyLs.Time) > lsWbLastDate) {
+            lsWbLastDate = new Date(historyLs.Time);
             lsWbIndexLast = indexWb;
         }
     });
@@ -121,7 +125,8 @@ function viewListLesson() {
                     <td class="text-end ${colorHistory}">${historyLs ? convertStrDateToMMdd(historyLs.Time) : ''}</td>
                 </tr>`;
 
-        if (historyLs) {
+        if (historyLs && new Date(historyLs.Time) > lsKjLastDate) {
+            lsKjLastDate = new Date(historyLs.Time);
             lsKjIndexLast = indexWb;
         }
     });
