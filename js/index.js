@@ -28,9 +28,9 @@ function start() {
         wb1.IsHard = wordHardHistory.includes(wb1.Id.toString());
     });
 
-    if (wordType == "hard") {
-        _listWordbook = derangeArray(_listWordbook.filter(wb => wb.IsHard));
-    }
+    // if (wordType == "hard") {
+    //     _listWordbook = derangeArray(_listWordbook.filter(wb => wb.IsHard));
+    // }
     if (!_listWordbook || _listWordbook.length == 0) {
         alert("Không có từ phù hợp");
         return;
