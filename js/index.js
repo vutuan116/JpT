@@ -171,6 +171,7 @@ function scrollLesson(page) {
     } else {
         return;
     }
+    if ($("#wb_lesson_" + lsIndex).length == 0){
         return;
     }
     $(".lesson_div").scrollTop($("#wb_lesson_" + lsIndex).offset().top - $("#wb_lesson_" + lsIndex).parent().outerHeight() * 7);
