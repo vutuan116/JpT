@@ -90,7 +90,7 @@ function genHtmlGrammar() {
 function genHtmlForKanji(index, word, isShowRandom) {
     let resultHtml = `<tr>`;
     var isShowKanji = isShowRandom ? getRandomInt(0, 100) % 2 == 0 : true;
-    if (!word.Kanji || word.Kanji==""){
+    if (!word.Kanji || word.Kanji == "") {
         word.Kanji = word.Hira;
     }
 
@@ -112,7 +112,7 @@ function genHtmlForKanji(index, word, isShowRandom) {
     resultHtml +=
         `<td class="lineh-1" onclick="toggleHideEle(this)">
             <p class="m-0 td_mean ${isShowRandom && isShowKanji ? "hide" : "hi_de"}">`;
-    if (!(!word.CnVi || word.CnVi == undefined || word.CnVi == "")){
+    if (!(!word.CnVi || word.CnVi == undefined || word.CnVi == "")) {
         resultHtml +=
             `<label class="cnvi">${word.CnVi}</label> <br>`;
     }
@@ -124,7 +124,7 @@ function genHtmlForKanji(index, word, isShowRandom) {
 
 function mixWb() {
     saveWordHard();
-    
+
     _listWordbook = derangeArray(_listWordbook);
     genHtmlWord();
 
@@ -169,6 +169,8 @@ function scrollLesson(page) {
     } else if (page == "kanji") {
         lsIndex = lsKjIndexLast;
     } else {
+        return;
+    }
         return;
     }
     $(".lesson_div").scrollTop($("#wb_lesson_" + lsIndex).offset().top - $("#wb_lesson_" + lsIndex).parent().outerHeight() * 7);

@@ -26,6 +26,13 @@ const getWordHardHistory = database.ref("/" + user_Id + "/wordHardHistory").once
     wordHardHistory = JSON.parse(snapshot.node_.value_ ?? "[]");
 });
 
-Promise.all([getMenuSetting, getLessonHistory, getWordHardHistory]).then(() => {
+const getWordbookExtend = database.ref("/" + user_Id + "/wordbookExtend").once('value').then((snapshot) => {
+    wordbookExtendArray = JSON.parse(snapshot.node_.value_ ?? "[]");
+});
+const getKanjiExtend = database.ref("/" + user_Id + "/kanjiExtend").once('value').then((snapshot) => {
+    kanjiExtendArray = JSON.parse(snapshot.node_.value_ ?? "[]");
+});
+
+Promise.all([getMenuSetting, getLessonHistory, getWordHardHistory,getWordbookExtend,getKanjiExtend]).then(() => {
     startPage();
 });

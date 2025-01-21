@@ -1,6 +1,8 @@
 var menuSetting = {};
 var lessonHistory = [];
 var wordHardHistory = [];
+var wordbookExtendArray = [];
+var kanjiExtendArray = [];
 
 function loadSetting() {
     if (menuSetting.Level) {

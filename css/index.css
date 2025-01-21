@@ -4,7 +4,7 @@ body {
     margin: auto;
 }
 
-.fz_20 {
+.font_size_20 {
     font-size: 20px;
 }
 
@@ -73,6 +73,10 @@ p {
 
 .fw-bold {
     font-weight: bold;
+}
+
+.fw-semi-bold{
+    font-weight: 500;
 }
 
 .btn_wordhard.on {
@@ -204,6 +208,10 @@ rt {
 
 .w-80 {
     width: 80%;
+}
+
+.w-60 {
+    width: 60%;
 }
 
 .btn_ontop {

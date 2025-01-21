@@ -18,6 +18,13 @@ function startPage() {
         _grammarJson.push(item);
     });
 
+    wordbookExtendArray.forEach(item => {
+        _tuVungJson.push(item);
+    });
+    kanjiExtendArray.forEach(item => {
+        _kanjiJson.push(item);
+    });
+
     viewListLevel();
     loadSetting();
     viewListLesson();
