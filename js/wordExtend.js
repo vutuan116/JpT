@@ -98,5 +98,5 @@ function createLesson() {
         kanjiExtendArray.push(lesson);
         writeDataToFireBase("kanjiExtend", JSON.stringify(kanjiExtendArray));
     }
-    $("#double_page").click();
+    window.location.reload();
 }
