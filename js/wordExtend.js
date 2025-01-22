@@ -70,7 +70,7 @@ function addNewLine(id) {
                     <td><input id="wb_${id}" class="form-control form-control-sm" type="text" onchange="addNewLine(${id})"></td>
                     <td><input id="hira_${id}" class="form-control form-control-sm" type="text" onchange="addNewLine(${id})"></td>
                     <td><input id="cnvi_${id}" class="form-control form-control-sm" type="text" onchange="addNewLine(${id})"></td>
-                    <td><input id="mean_${id}" class="form-control form-control-sm" type="text" onchange="addNewLine(${id})"></td>
+                    <td><textarea id="mean_${id}" class="form-control form-control-sm" rows="1" onchange="addNewLine(${id})"></textarea></td>
                 </tr>`;
     $("#table_new_word").append(html);
 }
