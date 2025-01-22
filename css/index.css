@@ -280,9 +280,6 @@ h6 {
     margin-left: 0.25rem;
 }
 
-.ml-2 {
-    margin-left: 0.5rem;
-}
 
 @media only screen and (max-width: 768px) {
     #tbl_body_list_wordbook {
@@ -370,6 +367,10 @@ h6 {
 
 .ml-2 {
     margin-left: 1rem !important;
+}
+
+.mr-2 {
+    margin-right: 1rem !important;
 }
 
 .ml-3 {
