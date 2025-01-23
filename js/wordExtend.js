@@ -78,16 +78,20 @@ function addNewLine(id) {
 function createLesson() {
     var lesson = {};
     lesson.Lesson = $("#lesson_name").val();
+    if (lesson.Lesson == ""){
+        alert("Vui lòng nhập tên bài học");
+        return;
+    }
     lesson.Level = $("#lesson_level").val();
     lesson.Data = [];
 
     for (let i = 0; i < listID.length-1; i++) {
         lesson.Data.push({
             "Id": listID[i],
-            "Kanji": $("#wb_" + listID[i]).val(),
-            "Hira": $("#hira_" + listID[i]).val(),
-            "CnVi": $("#cnvi_" + listID[i]).val(),
-            "Mean": $("#mean_" + listID[i]).val()
+            "Kanji": $("#wb_" + listID[i]).val().replace("\n","<br>"),
+            "Hira": $("#hira_" + listID[i]).val().replace("\n","<br>"),
+            "CnVi": $("#cnvi_" + listID[i]).val().replace("\n","<br>"),
+            "Mean": $("#mean_" + listID[i]).val().replace("\n","<br>")
         });
     }
 
@@ -99,4 +103,20 @@ function createLesson() {
         writeDataToFireBase("kanjiExtend", JSON.stringify(kanjiExtendArray));
     }
     window.location.reload();
+}
+function repair(){
+    for (let i = 0; i < wordbookExtendArray[0].Data.length; i++) {
+        if (wordbookExtendArray[0].Data[i].Kanji == "〜というのは/〜とは"){
+            wordbookExtendArray[0].Data[i].Kanji = "〜というのは<br>〜とは";
+        }
+        if (wordbookExtendArray[0].Data[i].Kanji == "〜というと <br>〜といえば \n〜といったら"){
+            wordbookExtendArray[0].Data[i].Kanji = "〜というと <br>〜といえば <br>〜といったら";
+        }
+        
+        wordbookExtendArray[0].Data[i].Kanji = wordbookExtendArray[0].Data[i].Kanji.replace("\n","<br>");
+        wordbookExtendArray[0].Data[i].Hira = wordbookExtendArray[0].Data[i].Hira.replace("\n","<br>");
+        wordbookExtendArray[0].Data[i].CnVi = wordbookExtendArray[0].Data[i].CnVi.replace("\n","<br>");
+        wordbookExtendArray[0].Data[i].Mean = wordbookExtendArray[0].Data[i].Mean.replace("\n","<br>");
+    }
+    writeDataToFireBase("wordbookExtend", JSON.stringify(wordbookExtendArray));
 }

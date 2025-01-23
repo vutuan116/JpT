@@ -166,6 +166,11 @@ rt {
     vertical-align: middle;
 }
 
+.td_8_20 {
+    width: 40%;
+    vertical-align: middle;
+}
+
 .td_10_20 {
     width: 50%;
 }
