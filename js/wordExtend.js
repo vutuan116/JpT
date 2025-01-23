@@ -104,6 +104,7 @@ function createLesson() {
     }
     window.location.reload();
 }
+
 function repair(){
     for (let i = 0; i < wordbookExtendArray[0].Data.length; i++) {
         if (wordbookExtendArray[0].Data[i].Kanji == "〜というのは/〜とは"){
