@@ -1,5 +1,8 @@
 var index = 0;
 var listID = [];
+var startId = new Date().getTime();
+var lessonNameOld = undefined;
+var lessonTypeOld = undefined;
 $(document).ready(function () {
     addNewLine();
     
@@ -13,20 +16,24 @@ function genListLessonExtend() {
     let html = "";
     for (let i = 0; i < wordbookExtendArray.length; i++) {
         html += `<tr>
+                    <td class="text-center" scope="col">${wordbookExtendArray[i].Level}</th>
                     <td class="text-center" scope="col">Từ vựng</th>
-                    <th class="text-center" scope="col">${wordbookExtendArray[i].Lesson}</th>
-                    <th class="text-center" scope="col">
+                    <td class="text-start" scope="col">${wordbookExtendArray[i].Lesson}</th>
+                    <td class="text-center" scope="col">
+                        <button class="btn btn-outline-danger" onclick="editLessonExtend('Từ vựng','${wordbookExtendArray[i].Lesson}')"><i class="fas fa-edit"></i></button>
                         <button class="btn btn-outline-danger" onclick="deleteLessonExtend('Từ vựng','${wordbookExtendArray[i].Lesson}')"><i class="fas fa-trash"></i></button>
-                    </th>
+                    </td>
                 </tr>`;
     }
     for (let i = 0; i < kanjiExtendArray.length; i++) {
         html += `<tr>
+                    <td class="text-center" scope="col">${kanjiExtendArray[i].Level}</th>
                     <td class="text-center" scope="col">Kanji</th>
-                    <th class="text-center" scope="col">${kanjiExtendArray[i].Lesson}</th>
-                    <th class="text-center" scope="col">
+                    <td class="text-start" scope="col">${kanjiExtendArray[i].Lesson}</th>
+                    <td class="text-center" scope="col">
+                    <button class="btn btn-outline-danger" onclick="editLessonExtend('Kanji','${kanjiExtendArray[i].Lesson}')"><i class="fas fa-edit"></i></button>
                         <button class="btn btn-outline-danger" onclick="deleteLessonExtend('Kanji','${kanjiExtendArray[i].Lesson}')"><i class="fas fa-trash"></i></button>
-                    </th>
+                    </td>
                 </tr>`;
     }
     $("#table_list_lesson").html(html);
@@ -53,16 +60,40 @@ function deleteLessonExtend(lessonType, lessonName) {
 }
 
 function editLessonExtend(lessonType, lessonName) {
+    var lessonE={};
+    lessonTypeOld = lessonType;
+    lessonNameOld = lessonName;
+    if (lessonType == "Kanji"){
+        lessonE = kanjiExtendArray.find(x=>x.Lesson == lessonName);
+        $("#lesson_type").val("Kanji");
+    }else{
+        lessonE = wordbookExtendArray.find(x=>x.Lesson == lessonName);
+        $("#lesson_type").val("Từ vựng");
+    }
 
+    $("#lesson_level").val(lessonE.Level);
+    $("#lesson_name").val(lessonE.Lesson);
+    
+    for(let i=0; i<lessonE.Data.length; i++){
+        let idx = $($("#table_new_word tr")[i]).attr("id").substring(3);
+
+        $("#wb_"+idx).val(lessonE.Data[i].Kanji);
+        $("#hira_"+idx).val(lessonE.Data[i].Hira);
+        $("#cnvi_"+idx).val(lessonE.Data[i].CnVi);
+        $("#mean_"+idx).val(lessonE.Data[i].Mean);
+
+        addNewLine();
+    }
 }
 
 function addNewLine(id) {
-    if (id && $("#table_new_word").children('tr').last().attr('id') != ("tr_" + id)) {
+    if (id && $("#table_new_word").children('tr').length >0 && $("#table_new_word").children('tr').last().attr('id') != ("tr_" + id)) {
         return;
     }
+
     index++;
 
-    id = new Date().getTime();
+    id = startId + index;
     listID.push(id);
 
     let html = `<tr id="tr_${id}">
@@ -76,6 +107,21 @@ function addNewLine(id) {
 }
 
 function createLesson() {
+    startId = new Date().getTime();
+    if (lessonNameOld){
+        if (lessonTypeOld == "Từ vựng") {
+            let index = wordbookExtendArray.indexOf(wordbookExtendArray.find(x => x.Lesson == lessonNameOld));
+            if (index > -1) {
+                wordbookExtendArray.splice(index, 1);
+            }
+        }else{
+            let index = kanjiExtendArray.indexOf(kanjiExtendArray.find(x => x.Lesson == lessonNameOld));
+            if (index > -1) {
+                kanjiExtendArray.splice(index, 1);
+            }
+        }
+    }
+
     var lesson = {};
     lesson.Lesson = $("#lesson_name").val();
     if (lesson.Lesson == ""){
