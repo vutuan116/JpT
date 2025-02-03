@@ -1,6 +1,5 @@
 var index = 0;
 var listID = [];
-var startId = new Date().getTime();
 var lessonNameOld = undefined;
 var lessonTypeOld = undefined;
 $(document).ready(function () {
@@ -73,27 +72,30 @@ function editLessonExtend(lessonType, lessonName) {
 
     $("#lesson_level").val(lessonE.Level);
     $("#lesson_name").val(lessonE.Lesson);
-    
+    $($("#table_new_word tr")[0]).remove();
+
+    index = 0;
+    listID = [];
     for(let i=0; i<lessonE.Data.length; i++){
-        let idx = $($("#table_new_word tr")[i]).attr("id").substring(3);
-
-        $("#wb_"+idx).val(lessonE.Data[i].Kanji);
-        $("#hira_"+idx).val(lessonE.Data[i].Hira);
-        $("#cnvi_"+idx).val(lessonE.Data[i].CnVi);
-        $("#mean_"+idx).val(lessonE.Data[i].Mean);
-
-        addNewLine();
+        addNewLine(lessonE.Data[i].Id);
+        $("#wb_"+lessonE.Data[i].Id).val(lessonE.Data[i].Kanji);
+        $("#hira_"+lessonE.Data[i].Id).val(lessonE.Data[i].Hira);
+        $("#cnvi_"+lessonE.Data[i].Id).val(lessonE.Data[i].CnVi);
+        $("#mean_"+lessonE.Data[i].Id).val(lessonE.Data[i].Mean);
     }
+    addNewLine();
 }
 
 function addNewLine(id) {
-    if (id && $("#table_new_word").children('tr').length >0 && $("#table_new_word").children('tr').last().attr('id') != ("tr_" + id)) {
+    if (id && listID.indexOf(id) == -1){
+        id = id;
+    }else if (id && $("#table_new_word").children('tr').last().attr('id') != ("tr_" + id)) {
         return;
+    }else{
+        id = new Date().getTime();
     }
 
     index++;
-
-    id = startId + index;
     listID.push(id);
 
     let html = `<tr id="tr_${id}">
