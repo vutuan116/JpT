@@ -100,10 +100,10 @@ function addNewLine(id) {
 
     let html = `<tr id="tr_${id}">
                     <td>${index}</td>
-                    <td><textarea id="wb_${id}" class="form-control form-control-sm" rows="2" onchange="addNewLine(${id})"></textarea></td>
-                    <td><textarea id="hira_${id}" class="form-control form-control-sm" rows="2" onchange="addNewLine(${id})"></textarea></td>
-                    <td><textarea id="cnvi_${id}" class="form-control form-control-sm" rows="2" onchange="addNewLine(${id})"></textarea></td>
-                    <td><textarea id="mean_${id}" class="form-control form-control-sm" rows="2" onchange="addNewLine(${id})"></textarea></td>
+                    <td><textarea id="wb_${id}" class="form-control form-control-sm" rows="3" onchange="addNewLine(${id})"></textarea></td>
+                    <td><textarea id="hira_${id}" class="form-control form-control-sm" rows="3" onchange="addNewLine(${id})"></textarea></td>
+                    <td><textarea id="cnvi_${id}" class="form-control form-control-sm" rows="3" onchange="addNewLine(${id})"></textarea></td>
+                    <td><textarea id="mean_${id}" class="form-control form-control-sm" rows="3" onchange="addNewLine(${id})"></textarea></td>
                 </tr>`;
     $("#table_new_word").append(html);
 }
