@@ -1,8 +1,18 @@
 function start() {
     _listWordbook = [];
+    let isRemindHardMode = $('#view_type_sel').val() == "remind-hard";
     let listLesson = $("input[type=checkbox]:checked");
     $(".btn_ontop")[0].click();
-    if (!listLesson || listLesson.length == 0) {
+
+    if (isRemindHardMode){
+        if ($("#wb_kan_sel").val() == "wordbook") {
+            listLesson = $("#wordbook_lesson_div input[type=checkbox]");
+        } else if ($("#wb_kan_sel").val() == "kanji") {
+            listLesson = $("#kanji_lesson_div input[type=checkbox]");
+        }
+    }
+
+    if ( !listLesson || listLesson.length == 0) {
         alert("Hãy chọn ít nhất 1 bài học");
         return;
     }
@@ -21,16 +31,26 @@ function start() {
         } else {
             tempWb = _grammarJson.filter(y => y.Level == level && y.Lesson == lesson)[0];
         }
-        _listWordbook = _listWordbook.concat(tempWb.Data);
+        
+        let tempListWb = tempWb.Data;
+
+        if (isRemindHardMode){
+            tempListWb = tempListWb.filter(y=>wordHardHistory.includes(y.Id.toString()));
+        }
+
+        _listWordbook = _listWordbook.concat(tempListWb);
     });
+
+    if (isRemindHardMode){
+        _listWordbook = derangeArray(_listWordbook);
+
+        _listWordbook = _listWordbook.slice(0,50);
+    }
 
     _listWordbook.forEach(wb1 => {
         wb1.IsHard = wordHardHistory.includes(wb1.Id.toString());
     });
 
-    // if (wordType == "hard") {
-    //     _listWordbook = derangeArray(_listWordbook.filter(wb => wb.IsHard));
-    // }
     if (!_listWordbook || _listWordbook.length == 0) {
         alert("Không có từ phù hợp");
         return;
