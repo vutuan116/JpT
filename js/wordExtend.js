@@ -134,13 +134,16 @@ function createLesson() {
     lesson.Data = [];
 
     for (let i = 0; i < listID.length-1; i++) {
-        lesson.Data.push({
+        let newWb = {
             "Id": listID[i],
             "Kanji": $("#wb_" + listID[i]).val().replace("\n","<br>"),
             "Hira": $("#hira_" + listID[i]).val().replace("\n","<br>"),
             "CnVi": $("#cnvi_" + listID[i]).val().replace("\n","<br>"),
             "Mean": $("#mean_" + listID[i]).val().replace("\n","<br>")
-        });
+        };
+        if (newWb.Kanji != "" || newWb.Hira != "" || newWb.CnVi != "" || newWb.Mean != ""){
+            lesson.Data.push(newWb);
+        }
     }
 
     if ($("#lesson_type").val() == "Từ vựng") {
@@ -151,21 +154,4 @@ function createLesson() {
         writeDataToFireBase("kanjiExtend", JSON.stringify(kanjiExtendArray));
     }
     window.location.reload();
-}
-
-function repair(){
-    for (let i = 0; i < wordbookExtendArray[0].Data.length; i++) {
-        if (wordbookExtendArray[0].Data[i].Kanji == "〜というのは/〜とは"){
-            wordbookExtendArray[0].Data[i].Kanji = "〜というのは<br>〜とは";
-        }
-        if (wordbookExtendArray[0].Data[i].Kanji == "〜というと <br>〜といえば \n〜といったら"){
-            wordbookExtendArray[0].Data[i].Kanji = "〜というと <br>〜といえば <br>〜といったら";
-        }
-        
-        wordbookExtendArray[0].Data[i].Kanji = wordbookExtendArray[0].Data[i].Kanji.replace("\n","<br>");
-        wordbookExtendArray[0].Data[i].Hira = wordbookExtendArray[0].Data[i].Hira.replace("\n","<br>");
-        wordbookExtendArray[0].Data[i].CnVi = wordbookExtendArray[0].Data[i].CnVi.replace("\n","<br>");
-        wordbookExtendArray[0].Data[i].Mean = wordbookExtendArray[0].Data[i].Mean.replace("\n","<br>");
-    }
-    writeDataToFireBase("wordbookExtend", JSON.stringify(wordbookExtendArray));
 }
