@@ -26,6 +26,7 @@ function startPage() {
     });
 
     _tuVungJson.sort((x,y)=>{return x.Lesson.localeCompare(y.Lesson)});
+    _kanjiJson.sort((x,y)=>{return x.Lesson.localeCompare(y.Lesson)});
     _grammarJson.sort((x,y)=>{return x.Lesson.localeCompare(y.Lesson)});
 
 
