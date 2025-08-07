@@ -1,6 +1,5 @@
-function start() {
+function start(isRemindHardMode) {
     _listWordbook = [];
-    let isRemindHardMode = $('#view_type_sel').val() == "remind-hard";
     let listLesson = $("input[type=checkbox]:checked");
     $(".btn_ontop")[0].click();
 
@@ -44,7 +43,7 @@ function start() {
     if (isRemindHardMode){
         _listWordbook = derangeArray(_listWordbook);
 
-        _listWordbook = _listWordbook.slice(0,50);
+        _listWordbook = _listWordbook.slice(0,20);
     }
 
     _listWordbook.forEach(wb1 => {
