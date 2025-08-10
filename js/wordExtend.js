@@ -11,6 +11,45 @@ Promise.all([getWordbookExtend,getKanjiExtend]).then(() => {
     genListLessonExtend();
 });
 
+function genWbFast(){
+    let arrLine = $("#wb_fast_list").val().split("\n");
+    let startIndex = +($($("#table_new_word>tr")[0]).attr("id").replace("tr_",""));
+
+    for(let i=0; i<arrLine.length; i++){
+        if (arrLine[i] != ""){
+            let wbTemp = arrLine[i].split("\t");
+            if (wbTemp.length==4){
+                $("#wb_"+startIndex).val(wbTemp[0]);
+                $("#hira_"+startIndex).val(wbTemp[1]);
+                $("#cnvi_"+startIndex).val(wbTemp[2]);
+                $("#mean_"+startIndex).val(wbTemp[3]);
+
+                if (wbTemp[1].includes("「") && wbTemp[1].includes("」")){
+                    $("#hira_"+startIndex).val(wbTemp[1].replace( /「.*」/,""));
+                    $("#cnvi_"+startIndex).val(wbTemp[1].slice(wbTemp[1].indexOf("「")+1,wbTemp[1].indexOf("」")));
+                }else{
+                    $("#hira_"+startIndex).val(wbTemp[1]);
+                    $("#cnvi_"+startIndex).val(wbTemp[2]);
+                }
+            } else if (wbTemp.length==3){
+                $("#wb_"+startIndex).val(wbTemp[0]);
+
+                if (wbTemp[1].includes("「") && wbTemp[1].includes("」")){
+                    $("#hira_"+startIndex).val(wbTemp[1].replace( /「.*」/,""));
+                    $("#cnvi_"+startIndex).val(wbTemp[1].slice(wbTemp[1].indexOf("「")+1,wbTemp[1].indexOf("」")));
+                }else{
+                    $("#hira_"+startIndex).val(wbTemp[1]);
+                }
+                $("#mean_"+startIndex).val(wbTemp[2]);
+            }else{
+                $("#wb_"+startIndex).val(arrLine[i]);
+            }
+            startIndex++;
+            addNewLine(startIndex);
+        }
+    }
+}
+
 function genListLessonExtend() {
     let html = "";
     for (let i = 0; i < wordbookExtendArray.length; i++) {
