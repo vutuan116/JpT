@@ -123,6 +123,7 @@ function editLessonExtend(lessonType, lessonName) {
         $("#mean_"+lessonE.Data[i].Id).val(lessonE.Data[i].Mean);
     }
     addNewLine();
+    $(".btn_ontop")[0].click();
 }
 
 function addNewLine(id) {
