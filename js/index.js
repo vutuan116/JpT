@@ -43,7 +43,7 @@ function start(isRemindHardMode) {
     if (isRemindHardMode){
         _listWordbook = derangeArray(_listWordbook);
 
-        _listWordbook = _listWordbook.slice(0,20);
+        _listWordbook = _listWordbook.slice(0,25);
     }
 
     _listWordbook.forEach(wb1 => {
