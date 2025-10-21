@@ -17,7 +17,7 @@ function start(isRemindHardMode) {
     }
 
     let level = $("#level_sel").val();
-    let wordType = $("#word_type_sel").val();
+    let isOnlyHardMode = ($("#word_type_sel").val() == "hard");
 
     listLesson.each(x => {
         var lesson = listLesson[x].value;
@@ -33,7 +33,7 @@ function start(isRemindHardMode) {
         
         let tempListWb = tempWb.Data;
 
-        if (isRemindHardMode){
+        if (isRemindHardMode || isOnlyHardMode){
             tempListWb = tempListWb.filter(y=>wordHardHistory.includes(y.Id.toString()));
         }
 
@@ -43,7 +43,7 @@ function start(isRemindHardMode) {
     if (isRemindHardMode){
         _listWordbook = derangeArray(_listWordbook);
 
-        _listWordbook = _listWordbook.slice(0,25);
+        _listWordbook = _listWordbook.slice(0,50);
     }
 
     _listWordbook.forEach(wb1 => {
