@@ -166,11 +166,11 @@ function viewListLesson() {
 
 function viewHistoryLearning() {
     let html = "";
-    lessonHistory.slice(lessonHistory.length - 6, lessonHistory.length).forEach(x => {
-        html = `<tr>
-                    <td>${x.Name}</td>
-                    <td>${x.Time}</td>
-                </tr>` + html;
-    });
-    $("#history_learning").html(html);
+    // lessonHistory.slice(lessonHistory.length - 6, lessonHistory.length).forEach(x => {
+    //     html = `<tr>
+    //                 <td>${x.Name}</td>
+    //                 <td>${x.Time}</td>
+    //             </tr>` + html;
+    // });
+    // $("#history_learning").html(html);
 }
